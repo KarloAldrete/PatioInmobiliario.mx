@@ -8,10 +8,25 @@ function closeSignUp() {
 }
 
 function reload() {
-    document.getElementById('myform').reset();
+    document.getElementById('signup-form').reset();
+}
+
+function LogIn() {
+    document.getElementById("loginrq").classList.toggle("active");
+}
+
+function closeLogIn() {
+    document.getElementById("loginrq").classList.toggle("active");
+}
+
+function reloadLogIn() {
+    document.getElementById('loginform').reset();
 }
 
 
 export { SignUp };
 export { closeSignUp };
 export { reload };
+export { LogIn };
+export { closeLogIn };
+export { reloadLogIn };
