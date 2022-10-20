@@ -432,14 +432,14 @@ body {
 }
 
 .popular-section .container .cards-container .card .title h1 {
-    font-size: 24px;
+    font-size: 1.2vw;
     font-weight: 500;
     color: var(--Gray-Dark);
     transition: .2s;
 }
 
 .popular-section .container .cards-container .card .title p {
-    font-size: 16px;
+    font-size: .80vw;
     font-weight: 400;
     color: #8593A9;
     transition: .2s;
