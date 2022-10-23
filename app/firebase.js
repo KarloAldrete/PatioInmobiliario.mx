@@ -1,7 +1,10 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.0/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/9.12.0/firebase-auth.js"
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.12.0/firebase-firestore.js"
+import {} from "https://www.gstatic.com/firebasejs/9.12.0/firebase-storage.js"
+import { getStorage, ref } from "https://www.gstatic.com/firebasejs/9.12.0/firebase-storage.js"
 // https://firebase.google.com/docs/web/setup#available-libraries
+
 
 
 // Your web app's Firebase configuration
@@ -13,10 +16,12 @@ const firebaseConfig = {
     storageBucket: "patioinmobiliario-mx.appspot.com",
     messagingSenderId: "51755270215",
     appId: "1:51755270215:web:ebeb92c533fb87a727f162",
-    measurementId: "G-P86VNZXV49"
+    measurementId: "G-P86VNZXV49",
 };
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+export const storage = getStorage(app);
+export const storageRef = ref(storage);

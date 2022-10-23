@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=1.0, initial-scale=1.0">
+        <title>Patio Inmobiliario │ Búsquedas</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./search.css">
+        <link rel="icon" href="favicon.png">
+        <script src="./main-search.js" type="module"></script>
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+    </head>
+
+
+    <body>
+
+        <div class="main-container">
+
+            <div class="request active" id="body">
+
+                <div class="signup">
+
+                    <button class="close-signup" id="closesignup">
+                        <i class='bx bx-x'></i>
+                    </button>
+
+                    <div class="title">
+                        Registrate
+                    </div>
+
+                    <div class="form">
+
+                        <form action="signup" id="signup-form">
+
+                            <div class="container">
+
+                                <div class="first-row">
+
+                                    <div class="input-container">
+                                        <input type="text" name="name" id="name" required placeholder="Nombres">
+                                    </div>
+
+                                    <div class="input-container">
+                                        <input type="text" name="last-name" id="last-name" required placeholder="Apellidos">
+                                    </div>
+
+                                </div>
+
+                                <div class="second-row">
+
+                                    <div class="input-container">
+                                        <input type="date" name="bday" id="bday" required>
+                                    </div>
+
+                                </div>
+
+                                <div class="third-row">
+
+                                    <div class="input-container">
+                                        <input type="text" name="email" id="email" required placeholder="Correo Electronico">
+                                    </div>
+
+                                </div>
+
+                                <div class="fourth-row">
+
+                                    <div class="input-container">
+                                        <input type="password" name="password" id="password" required placeholder="Contraseña">
+                                    </div>
+
+                                </div>
+
+                                <div class="fifth-row">
+
+                                    <div class="card">
+                                        <img src="./individual.png" alt="">
+                                        <p>Individual</p>
+                                    </div>
+
+                                    <div class="card">
+                                        <img src="./empresa.png" alt="">
+                                        <p>Empresa</p>
+                                    </div>
+
+                                    <div class="card">
+                                        <img src="./desarrolladora.png" alt="">
+                                        <p>Desarrolladora</p>
+                                    </div>
+
+                                </div>
+
+                                <button class="createAccount" id="createAccount" type="submit">Crear Cuenta</button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="loginrequest active" id="loginrq">
+
+                <div class="login">
+
+                    <button class="close-login" id="closelogin2">
+                        <i class='bx bx-x'></i>
+                    </button>
+
+                    <div class="title">
+                        Iniciar Sesión
+                    </div>
+
+                    <div class="form">
+
+                        <form action="login" id="login-form">
+
+                            <div class="container">
+
+                                <div class="first-row">
+
+                                    <div class="input-container">
+                                        <input type="text" name="login-email" id="login-email" required placeholder="Correo Electronico">
+                                    </div>
+
+                                </div>
+
+                                <div class="second-row">
+
+                                        <div class="input-container">
+                                            <input type="password" name="login-password" id="login-password" required placeholder="Contraseña">
+                                        </div>
+
+                                </div>
+
+                                <button class="connectAccount" id="loginAccount" type="submit">Conectarse</button>
+
+                                <p>Olvidaste tu contraseña?</p>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="navbar">
+                <div class="logo">
+                    <img src="./logo.png" alt="logo" id="patioinmb">
+                </div>
+                <div class="menu">
+                        <a href="#">Acerca De</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Contacto</a>
+                </div>
+
+                <div class="user-options active">
+                    <div class="logIn" id="login">
+                        <a href="#">Iniciar Sesión</a>
+                        <img src="./logIn-Icon.svg">
+                    </div>
+                    <div class="signUp">
+                        <a href="#" id="register">Registrarse</a>
+                    </div>
+                </div>
+
+                <div class="user-loggedIn active">
+
+                    <img class="img1" src="./user.jpg" alt="">
+
+                    <img class="img2" src="./img2.png" alt="">
+
+                    <img class="img3" src="./user.jpg" alt="">
+
+                    <div class="user-options-inner">
+
+                        <div class="user-details">
+                            <p id="role">Realtor</p>
+                            <p id="auth-user"></p>
+                        </div>
+
+                        <div class="user-logout">
+                            <i class='bx bx-log-out' id="logout"></i>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="content">
+
+                <div class="filters-menu">
+
+                    <div class="searches-title">
+                        <p>Tu búsqueda en <strong id="city">Guadalajara</strong> <br> obtuvo <strong id="results-amount">158</strong> resultados.</p>
+                    </div>
+
+                    <div class="basic-filters">
+
+                        <div class="section-title">
+                            <p>Búsqueda</p>
+                        </div>
+
+                        <div class="inputs">
+
+                            <div class="ciudad">
+                                <input type="text" name="address" id="address" placeholder="Guadalajara" onclick="press()">
+                            </div>
+
+                            <div class="re-type">
+                                <select name="property" id="property">
+                                    <option value="" selected disabled>Inmueble</option>
+                                    <option value="Casa">Casa</option>
+                                    <option value="Departamento">Departamento</option>
+                                    <option value="Terreno">Terreno</option>
+                                </select>
+                            </div>
+
+                            <div class="tag">
+                                <select name="tag" id="tag">
+                                    <option value="" selected disabled>Etiqueta</option>
+                                    <option value="Venta">Venta</option>
+                                    <option value="Renta">Renta</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="price">
+
+                        <div class="section-title">
+                            <p>Rango de Precios</p>
+                        </div>
+
+                        <div class="inputs">
+
+                            <div class="min">
+                                <input type="text" name="min" id="min" placeholder="Min">
+                            </div>
+
+                            <div class="max">
+                                <input type="text" name="max" id="max" placeholder="Max">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="basic-filters-category">
+
+                        <div class="section-title">
+                            <p>Filtros Básicos</p>
+                        </div>
+
+                        <div class="options" id="options">
+
+                            <div class="bedrooms">
+
+                                <div class="section-name">
+                                    <img src="./bedrooms.png" alt="" id="bed-image">
+                                    <p id="bed-name">Recámaras</p>
+                                </div>
+
+                                <div class="buttons">
+                                    <button class="btn" id="bed_minus"><i class='bx bx-minus'></i></button>
+                                    <p id="bedroom-quantity">0</p>
+                                    <button class="btn" id="bed_plus"><i class='bx bx-plus'></i></button>
+                                </div>
+
+                            </div>
+
+                            <div class="garajes">
+
+                                <div class="section-name">
+                                    <img src="./garajes.png" alt="" id="garaje-image">
+                                    <p id="garaje-name">Garajes</p>
+                                </div>
+
+                                <div class="buttons">
+                                    <button class="btn" id="garaje_minus"><i class='bx bx-minus'></i></button>
+                                    <p id="garaje-quantity">0</p>
+                                    <button class="btn" id="garaje_plus"><i class='bx bx-plus'></i></button>
+                                </div>
+
+                            </div>
+
+                            <div class="bathrooms">
+
+                                <div class="section-name">
+                                    <img src="./bathrooms.png" alt="" id="bathroom-image">
+                                    <p id="bathroom-name">Baños</p>
+                                </div>
+
+                                <div class="buttons">
+                                    <button class="btn" id="bathroom_minus"><i class='bx bx-minus'></i></button>
+                                    <p id="bathroom-quantity">0</p>
+                                    <button class="btn" id="bathroom_plus"><i class='bx bx-plus'></i></button>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="advanced-filters">
+
+                        
+
+                    </div>
+
+                </div>
+
+                <div class="properties">
+
+                    <div class="outstanding">
+
+                        <div class="card">
+
+                            <div class="image-section">
+
+                                <div class="icon">
+                                    <img src="./camera.png" alt="">
+                                    <p>16</p>
+                                </div>
+
+                                <img src="./outstanding-1.png" alt="">
+
+                            </div>
+
+                            <div class="info-section">
+
+                                <div class="first-row">
+
+                                    <div class="price">
+
+                                        <p>$9,200,000</p>
+                                        <img src="./MXN.png" alt="">
+
+                                    </div>
+
+                                    <div class="tag">
+
+                                        <p>Venta</p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="second-row">
+
+                                    <div class="property-results">
+
+                                        <p>4 Recámaras</p>
+
+                                        <p>│­</p>
+
+                                        <p>2 Baños</p>
+
+                                        <p>│­</p>
+
+                                        <p>1 Garaje</p>
+
+                                        <p>│­</p>
+
+                                        <p>1950 Metros­²</p>
+
+                                    </div>
+
+                                    <div class="property-extras">
+
+                                        <p>Cocina</p>
+
+                                        <p>∙­</p>
+
+                                        <p>Lavadora</p>
+
+                                        <p>∙­</p>
+
+                                        <p>Gimnasio</p>
+
+                                        <p>∙­</p>
+
+                                        <p>A/C</p>
+
+                                        <p>∙­</p>
+
+                                        <p>Gas</p>
+
+                                        <p>∙­</p>
+
+                                        <p>Jardín</p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="third-row">
+
+                                    <div class="property-address">
+
+                                        <p>Ampliación Ejido Lazaro Cardenas, Zapopan</p>
+
+                                    </div>
+
+                                    <div class="icons">
+
+                                        <img src="./share.png" alt="">
+
+                                        <img src="./unliked.png" alt="">
+
+                                        <img src="./compare.png" alt="">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="card">
+
+                            
+
+                        </div>
+
+                    </div>
+
+                    <div class="normal-announcements">
+
+                        <div class="card">
+
+
+
+                        </div>
+
+                        
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </body>
+
+
+</html>

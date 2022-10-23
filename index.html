@@ -166,7 +166,7 @@
                         <a href="#">Contacto</a>
                 </div>
 
-                <div class="user-options">
+                <div class="user-options active">
                     <div class="logIn" id="login">
                         <a href="#">Iniciar Sesión</a>
                         <img src="./logIn-Icon.svg">
@@ -174,6 +174,29 @@
                     <div class="signUp">
                         <a href="#" id="register">Registrarse</a>
                     </div>
+                </div>
+
+                <div class="user-loggedIn active">
+
+                    <img class="img1" src="./user.jpg" alt="">
+
+                    <img class="img2" src="./img2.png" alt="">
+
+                    <img class="img3" src="./user.jpg" alt="">
+
+                    <div class="user-options-inner">
+
+                        <div class="user-details">
+                            <p id="role">Realtor</p>
+                            <p id="auth-user"></p>
+                        </div>
+
+                        <div class="user-logout">
+                            <i class='bx bx-log-out' id="logout"></i>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
 
@@ -188,7 +211,7 @@
 
                         <div class="first-part">
                             <img src="./location-icon.png" alt="">
-                            <input type="text" name="address" id="address" placeholder="Dirección o C.P.">
+                            <input type="text" name="address" id="address" placeholder="Dirección" onclick="press()">
                         </div>
 
                         <div class="divider"></div>
@@ -212,13 +235,13 @@
                                 <p>Recámaras</p>
                             </div>
 
-                            <div class="buttons">
+                            <div class="buttons"> 
                                 <button class="btn" id="btn1"><i class='bx bx-minus'></i></button>
-                                <p>1</p>
+                                <p id="bedroom-quantity">1</p>
                                 <button class="btn" id="btn2"><i class='bx bx-plus'></i></button>
                             </div>
 
-                            <button class="search-btn">Buscar</button>
+                            <a href="./search.html" class="search-btn" id="search">Buscar</a>
                         </div>
 
                     </div>
