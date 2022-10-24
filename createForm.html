@@ -7,13 +7,13 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=1.0, initial-scale=1.0">
-        <title>Patio Inmobiliario │ Búsquedas</title>
+        <title>Patio Inmobiliario │ Crear Publicación</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="./search.css">
+        <link rel="stylesheet" href="./create.css">
         <link rel="icon" href="favicon.png">
-        <script src="./main-search.js" type="module"></script>
+        <script src="./main-create.js" type="module"></script>
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
     </head>
@@ -203,249 +203,185 @@
 
             <div class="content">
 
-                <div class="filters-menu">
+                <div class="first-row">
 
-                    <div class="searches-title">
-                        <p>Tu búsqueda en <strong id="city">Guadalajara</strong> <br> obtuvo <strong id="results-amount">158</strong> resultados.</p>
-                    </div>
-
-                    <div class="basic-filters">
+                    <div class="property-form">
 
                         <div class="section-title">
-                            <p>Búsqueda</p>
-                        </div>
 
-                        <div class="inputs">
-
-                            <div class="ciudad">
-                                <input type="text" name="address" id="address" placeholder="Guadalajara" onclick="press()">
-                            </div>
-
-                            <div class="re-type">
-                                <select name="property" id="property">
-                                    <option value="" selected disabled>Inmueble</option>
-                                    <option value="Casa">Casa</option>
-                                    <option value="Departamento">Departamento</option>
-                                    <option value="Terreno">Terreno</option>
-                                </select>
-                            </div>
-
-                            <div class="tag">
-                                <select name="tag" id="tag">
-                                    <option value="" selected disabled>Etiqueta</option>
-                                    <option value="Venta">Venta</option>
-                                    <option value="Renta">Renta</option>
-                                </select>
-                            </div>
+                            <h1>Formulario de Propiedad</h1>
 
                         </div>
+
+                        <form action="" id="create-announcement">
+
+                            <div class="first-inner-row">
+
+                                <div class="location">
+                                    <input type="text" name="location" id="location" placeholder="Localidad">
+                                </div>
+
+                                <div class="address">
+                                    <input type="text" name="address" id="address" placeholder="Dirección">
+                                </div>
+
+                            </div>
+
+                            <div class="second-inner-row">
+
+                                <div class="property-type">
+                                    <select name="property" id="property" required>
+                                        <option value="" selected disabled id="disable">Inmueble</option>
+                                        <option value="Casa" id="casa-final">Casa</option>
+                                        <option value="Departamento" id="departamento-final">Departamento</option>
+                                        <option value="Terreno" id="terreno-final">Terreno</option>
+                                    </select>
+                                </div>
+
+                                <div class="status">
+                                    <select name="tag" id="tag">
+                                        <option value="" selected disabled>Etiqueta</option>
+                                        <option value="Venta">Venta</option>
+                                        <option value="Renta">Renta</option>
+                                    </select>
+                                </div>
+
+                                <div class="year-built">
+                                    <input placeholder="Construido" class="textbox-n" type="text" onfocus="(this.type='date')" id="date" required>
+                                </div>
+
+                            </div>
+
+                        </form>
 
                     </div>
 
-                    <div class="price">
+                    <div class="property-card">
 
-                        <div class="section-title">
-                            <p>Rango de Precios</p>
-                        </div>
+                        <div class="images-section" id="images-backcolor">
 
-                        <div class="inputs">
-
-                            <div class="min">
-                                <input type="text" name="min" id="min" placeholder="Min">
+                            <div class="image-icon">
+                                <img src="./images-request.png" alt="" id="camera-icon">
+                                <img src="" alt="" id="output">
                             </div>
 
-                            <div class="max">
-                                <input type="text" name="max" id="max" placeholder="Max">
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="basic-filters-category">
-
-                        <div class="section-title">
-                            <p>Filtros Básicos</p>
-                        </div>
-
-                        <div class="options" id="options">
-
-                            <div class="bedrooms">
-
-                                <div class="section-name">
-                                    <img src="./bedrooms.png" alt="" id="bed-image">
-                                    <p id="bed-name">Recámaras</p>
-                                </div>
-
-                                <div class="buttons">
-                                    <button class="btn" id="bed_minus"><i class='bx bx-minus'></i></button>
-                                    <p id="bedroom-quantity">0</p>
-                                    <button class="btn" id="bed_plus"><i class='bx bx-plus'></i></button>
-                                </div>
-
-                            </div>
-
-                            <div class="garajes">
-
-                                <div class="section-name">
-                                    <img src="./garajes.png" alt="" id="garaje-image">
-                                    <p id="garaje-name">Garajes</p>
-                                </div>
-
-                                <div class="buttons">
-                                    <button class="btn" id="garaje_minus"><i class='bx bx-minus'></i></button>
-                                    <p id="garaje-quantity">0</p>
-                                    <button class="btn" id="garaje_plus"><i class='bx bx-plus'></i></button>
-                                </div>
-
-                            </div>
-
-                            <div class="bathrooms">
-
-                                <div class="section-name">
-                                    <img src="./bathrooms.png" alt="" id="bathroom-image">
-                                    <p id="bathroom-name">Baños</p>
-                                </div>
-
-                                <div class="buttons">
-                                    <button class="btn" id="bathroom_minus"><i class='bx bx-minus'></i></button>
-                                    <p id="bathroom-quantity">0</p>
-                                    <button class="btn" id="bathroom_plus"><i class='bx bx-plus'></i></button>
-                                </div>
-
+                            <div class="image-button">
+                                <input type="file" name="" id="files" accept="image/*" onchange="loadFile(event)"></input>
+                                <label for="files" class="button-images">Agregar Imagenes</label>
+                                <script>
+                                    var loadFile = function(event) {
+                                        var image = document.getElementById('output');
+                                        let final = document.getElementById('images-backcolor');
+                                        let camera = document.getElementById('camera-icon');
+                                        let output = document.getElementById('output');
+                                        let button = document.querySelector('.button-images');
+                                        let button_extra = document.querySelector('.image-button');
+                                        let currency = document.getElementById('MXN');
+                                        image.src = URL.createObjectURL(event.target.files[0]);
+                                        final.style.backgroundColor = "transparent";
+                                        camera.style.display = "none";
+                                        output.style.display = "block";
+                                        button.style.color = "#FF2E63";
+                                        button.style.border = "2px #FF2E63 solid";
+                                        button.style.backgroundColor = "transparent";
+                                        button_extra.style.paddingTop = "15%";
+                                        currency.style.display = "block";
+                                    };
+                                </script>
                             </div>
 
                         </div>
 
-                    </div>
+                        <div class="info-section">
 
-                    <div class="advanced-filters">
+                            <div class="section-title">
 
-                        
-
-                    </div>
-
-                </div>
-
-                <div class="properties">
-
-                    <div class="outstanding">
-
-                        <div class="card">
-
-                            <div class="image-section">
-
-                                <div class="icon">
-                                    <img src="./camera.png" alt="">
-                                    <p>16</p>
-                                </div>
-
-                                <img src="./outstanding-1.png" alt="">
+                                    <h1 id="price">$ 450,000</h1>
+                                    <img src="./USD-32.png" alt="" id="MXN">
 
                             </div>
 
-                            <div class="info-section">
+                            <div class="property-info">
 
                                 <div class="first-row">
 
-                                    <div class="price">
+                                    <p>4 Recámaras</p>
 
-                                        <p>$9,200,000</p>
-                                        <img src="./MXN.png" alt="">
+                                    <p class="divider">│­</p>
 
-                                    </div>
+                                    <p>2 Baños</p>
 
-                                    <div class="tag">
+                                    <p class="divider">│­</p>
 
-                                        <p>Venta</p>
+                                    <p >1 Garaje</p>
 
-                                    </div>
+                                    <p class="divider">│­</p>
+
+                                    <p>1,950 M­²</p>
 
                                 </div>
 
                                 <div class="second-row">
 
-                                    <div class="property-results">
+                                    <p>Cocina</p>
 
-                                        <p>4 Recámaras</p>
+                                    <p class="divider">∙­</p>
 
-                                        <p>│­</p>
+                                    <p>Lavadora</p>
 
-                                        <p>2 Baños</p>
+                                    <p class="divider">∙­</p>
 
-                                        <p>│­</p>
+                                    <p>Gimnasio</p>
 
-                                        <p>1 Garaje</p>
+                                    <p class="divider">∙­</p>
 
-                                        <p>│­</p>
+                                    <p>A/C</p>
 
-                                        <p>1950 Metros­²</p>
+                                    <p class="divider">∙­</p>
 
-                                    </div>
+                                    <p>Gas</p>
 
-                                    <div class="property-extras">
+                                    <p class="divider">∙­</p>
 
-                                        <p>Cocina</p>
-
-                                        <p>∙­</p>
-
-                                        <p>Lavadora</p>
-
-                                        <p>∙­</p>
-
-                                        <p>Gimnasio</p>
-
-                                        <p>∙­</p>
-
-                                        <p>A/C</p>
-
-                                        <p>∙­</p>
-
-                                        <p>Gas</p>
-
-                                        <p>∙­</p>
-
-                                        <p>Jardín</p>
-
-                                    </div>
+                                    <p>Jardín</p>
 
                                 </div>
 
-                                <div class="third-row">
+                            </div>
 
-                                    <div class="property-address">
+                            <div class="property-location">
 
-                                        <p>Ampliación Ejido Lazaro Cardenas, Zapopan</p>
+                                <p id="location">Cancún, Quintana Roo</p>
 
-                                    </div>
+                                <p id="address">Av. Bonampak 1, Cancún, Quintana Roo</p>
 
-                                    <div class="icons">
+                            </div>
 
-                                        <img src="./share.png" alt="">
+                            <div class="property-tag-icons">
 
-                                        <img src="./unliked.png" alt="">
+                                <div class="tags">
 
-                                        <img src="./compare.png" alt="">
+                                    <div class="tag" id="sell">Venta</div>
 
-                                    </div>
+                                    <div class="tag" id="rent">Renta</div>
+
+                                    <div class="tag" id="urgent">Urgente</div>
+
+                                </div>
+
+                                <div class="icons">
+
+                                    <img src="./share.png" alt="">
+
+                                    <img src="./unliked.png" alt="">
+
+                                    <img src="./compare.png" alt="">
 
                                 </div>
 
                             </div>
 
                         </div>
-
-                    </div>
-
-                    <div class="normal-announcements">
-
-                        <div class="card">
-
-
-
-                        </div>
-
-                        
 
                     </div>
 
@@ -454,8 +390,6 @@
             </div>
 
         </div>
-
-
 
     </body>
 

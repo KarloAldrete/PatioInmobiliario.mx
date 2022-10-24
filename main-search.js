@@ -177,6 +177,7 @@ onAuthStateChanged(auth, async (user) => {
     if (user) {
         document.querySelector('.user-loggedIn').classList.toggle('active');
         document.querySelector('.user-options').classList.toggle('active');
+        document.getElementById('create').style.display = "block";
         reload();
 
         if (user.uid === "fniSafWHatf9fpdK5keER4oiLyY2") {

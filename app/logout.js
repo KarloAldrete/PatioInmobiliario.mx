@@ -9,4 +9,6 @@ logout.addEventListener('click', async (e) => {
     console.log('signed out');
     document.querySelector('.user-loggedIn').classList.toggle('active');
     document.querySelector('.user-options').classList.toggle('active');
+    document.getElementById('create').style.display = "none";
+    document.getElementById('login-form').reset();
 });
