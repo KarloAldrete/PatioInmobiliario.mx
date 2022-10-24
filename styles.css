@@ -550,6 +550,10 @@ body {
     display: none;
 }
 
+.user-loggedIn .img4 {
+    display: none;
+}
+
 .user-loggedIn img {
     width: 17%;
     border-radius: 50%;

@@ -46,10 +46,14 @@ onAuthStateChanged(auth, async (user) => {
         reload();
 
         if (user.uid === "fniSafWHatf9fpdK5keER4oiLyY2") {
-            document.getElementById("auth-user").innerHTML = "Karlo Aldrete";
-            document.querySelector('.img2').style.display = "block";
-            document.querySelector('.img2').style.border = "2px solid #FF2E63";
-            document.getElementById("role").innerHTML = "CEO";
+            // document.getElementById("auth-user").innerHTML = "Karlo Aldrete";
+            // document.querySelector('.img2').style.display = "block";
+            // document.querySelector('.img2').style.border = "2px solid #FF2E63";
+            // document.getElementById("role").innerHTML = "CEO";
+            document.getElementById("auth-user").innerHTML = "Marco Acosta";
+            document.querySelector('.img4').style.display = "block";
+            document.querySelector('.img4').style.border = "2px solid #FF2E63";
+            document.getElementById("role").innerHTML = "Inversor";
         }
 
         if (user.uid === "HG3hBX1MfHTnl85KsZEwYdHZkLj1") {
@@ -61,6 +65,13 @@ onAuthStateChanged(auth, async (user) => {
 
         if (user.uid === "DjE1IwsSs8YXQvJJfIFFvNHtfa82") {
             document.getElementById("auth-user").innerHTML = "Nancy Torres";
+        }
+
+        if (user.uid === "9wW7aM2GCPdqUxwoL9fldOjjECV2") {
+            document.getElementById("auth-user").innerHTML = "Marco Acosta";
+            document.querySelector('.img4').style.display = "block";
+            document.querySelector('.img4').style.border = "2px solid #FF2E63";
+            document.getElementById("role").innerHTML = "Inversor";
         }
 
     } else {

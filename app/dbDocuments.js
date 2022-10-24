@@ -20,7 +20,7 @@ signupForm.addEventListener('submit', async (e) => {
         const first_name = document.getElementById('name').value;
         const last_name = document.getElementById("last-name").value;
         const bday = document.getElementById("bday").value;
-        await setDoc(doc(db, 'users', first_name), {
+        await setDoc(doc(db, 'users', first_name + last_name), {
             Nombres: first_name,
             Apellidos: last_name,
             BDAY: bday,
