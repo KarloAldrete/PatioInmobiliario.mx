@@ -8,6 +8,7 @@ import './app/dbDocuments.js';
 import './app/LogIn.js';
 import './app/logout.js';
 import './app/plusButtons.js';
+import './app/uploadImages.js';
 
 
 
@@ -16,6 +17,8 @@ let closebtn = document.getElementById("closesignup");
 
 let loginbtn = document.getElementById("login");
 let closebtnlogin = document.getElementById("closelogin2");
+
+let userMenu = document.getElementById("userProfile");
 
 document.getElementById("btn1").addEventListener("click", less);
 document.getElementById("btn2").addEventListener("click", plus);
@@ -39,6 +42,29 @@ closebtn.addEventListener("click", () => {
     closeSignUp();
 });
 
+userMenu.addEventListener("click", () => {
+    let userMenu = document.querySelector(".user-loggedIn-Dropdown");
+    userMenu.classList.toggle("active");
+
+    let logout = document.getElementById("logout");
+    logout.addEventListener("click", () => {
+        userMenu.classList.toggle("active");
+        document.getElementById('login-form').reset();
+    });
+});
+
+let email = document.getElementById("login-email").checkValidity();
+let password = document.getElementById("login-password").checkValidity();
+let button = document.getElementById("loginAccount");
+
+let check = document.getElementById("login-password");
+
+check.addEventListener("keyup", () => {
+
+console.log(email);
+
+});
+
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         document.querySelector('.user-loggedIn').classList.toggle('active');
@@ -46,14 +72,10 @@ onAuthStateChanged(auth, async (user) => {
         reload();
 
         if (user.uid === "fniSafWHatf9fpdK5keER4oiLyY2") {
-            // document.getElementById("auth-user").innerHTML = "Karlo Aldrete";
-            // document.querySelector('.img2').style.display = "block";
-            // document.querySelector('.img2').style.border = "2px solid #FF2E63";
-            // document.getElementById("role").innerHTML = "CEO";
-            document.getElementById("auth-user").innerHTML = "Marco Acosta";
-            document.querySelector('.img4').style.display = "block";
-            document.querySelector('.img4').style.border = "2px solid #FF2E63";
-            document.getElementById("role").innerHTML = "Inversor";
+            document.getElementById("auth-user").innerHTML = "Karlo Aldrete";
+            document.querySelector('.img2').style.display = "block";
+            document.querySelector('.img2').style.border = "2px solid #FF2E63";
+            document.getElementById("role").innerHTML = "CEO";
         }
 
         if (user.uid === "HG3hBX1MfHTnl85KsZEwYdHZkLj1") {

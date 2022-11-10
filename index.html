@@ -128,17 +128,19 @@
 
                                 <div class="first-row">
 
-                                    <div class="input-container">
-                                        <input type="text" name="login-email" id="login-email" required placeholder="Correo Electronico">
+                                    <div class="input-group">
+                                        <input type="email" name="login-email" id="login-email" required class="input">
+                                        <label class="user-label">Correo Electronico</label>
                                     </div>
 
                                 </div>
 
                                 <div class="second-row">
 
-                                        <div class="input-container">
-                                            <input type="password" name="login-password" id="login-password" required placeholder="Contraseña">
-                                        </div>
+                                    <div class="input-group">
+                                        <input type="password" name="login-password" id="login-password" required class="input" minlength="6">
+                                        <label class="user-label">Contraseña</label>
+                                    </div>
 
                                 </div>
 
@@ -178,23 +180,71 @@
 
                 <div class="user-loggedIn active">
 
-                    <img class="img1" src="./user.jpg" alt="">
+                    <img class="img1" src="./user.jpg" alt="" id="userImage">
 
-                    <img class="img2" src="./img2.png" alt="">
+                    <img class="img2" src="./img2.png" alt="" id="userImage">
 
-                    <img class="img3" src="./user.jpg" alt="">
+                    <img class="img3" src="./user.jpg" alt="" id="userImage">
 
-                    <img class="img4" src="./Marco.jpeg" alt="">
+                    <img class="img4" src="./Marco.jpeg" alt="" id="userImage">
 
                     <div class="user-options-inner">
 
-                        <div class="user-details">
+                        <div class="user-details" id="userProfile">
                             <p id="role">Realtor</p>
                             <p id="auth-user"></p>
                         </div>
 
-                        <div class="user-logout">
-                            <i class='bx bx-log-out' id="logout"></i>
+                    </div>
+
+                </div>
+
+                <div class="user-loggedIn-Dropdown active" id="userProfile">
+
+                    <div class="dashboard">
+
+                        <div class="dashboard-icon">
+                            <img src="./dashboard-icon.svg" alt="">
+                        </div>
+
+                        <div class="dashboard-text">
+                            <p>Dashboard</p>
+                        </div>
+
+                    </div>
+
+                    <div class="create-publication">
+
+                        <div class="create-publication-icon">
+                            <img src="./form-icon.svg" alt="">
+                        </div>
+
+                        <div class="create-publication-text">
+                            <a href="./createForm.html">Crear Anuncio</a>
+                        </div>
+
+                    </div>
+
+                    <div class="my-profile">
+
+                        <div class="my-profile-icon">
+                            <img src="./profile-icon.svg" alt="">
+                        </div>
+
+                        <div class="myprofile-text">
+                            <p>Perfil</p>
+                        </div>
+
+                    </div>
+
+                    <div class="logout" id="logout">
+
+                        <div class="logout-icon">
+                            <img src="/logout-icon.svg" alt="">
+                        </div>
+
+                        <div class="logout-text">
+                            <p>Cerrar sesión</p>
                         </div>
 
                     </div>

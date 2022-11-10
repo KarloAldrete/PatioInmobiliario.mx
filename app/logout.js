@@ -2,6 +2,7 @@ import { signOut } from "https://www.gstatic.com/firebasejs/9.12.0/firebase-auth
 import { auth } from './firebase.js';
 
 const logout = document.getElementById('logout');
+let userMenu = document.querySelector(".user-loggedIn-Dropdown");
 
 logout.addEventListener('click', async (e) => {
     e.preventDefault();

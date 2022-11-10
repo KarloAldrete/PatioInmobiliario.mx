@@ -15,6 +15,7 @@
         <link rel="icon" href="favicon.png">
         <script src="./main-create.js" type="module"></script>
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+        <script src="https://unpkg.com/imask"></script>
 
     </head>
 
@@ -217,12 +218,14 @@
 
                             <div class="first-inner-row">
 
-                                <div class="location">
-                                    <input type="text" name="location" id="location" placeholder="Localidad">
+                                <div class="input-group">
+                                    <input type="text" name="location" id="location" required class="input">
+                                    <label class="user-label">Localidad</label>
                                 </div>
 
-                                <div class="address">
-                                    <input type="text" name="address" id="address" placeholder="Dirección">
+                                <div class="input-group">
+                                    <input type="text" name="address" id="address" required class="input">
+                                    <label class="user-label">Dirección</label>
                                 </div>
 
                             </div>
@@ -239,8 +242,8 @@
                                 </div>
 
                                 <div class="status">
-                                    <select name="tag" id="tag">
-                                        <option value="" selected disabled>Etiqueta</option>
+                                    <select name="tag" id="tag" required>
+                                        <option value="" selected disabled id="disable">Etiqueta</option>
                                         <option value="Venta">Venta</option>
                                         <option value="Renta">Renta</option>
                                     </select>
@@ -248,6 +251,302 @@
 
                                 <div class="year-built">
                                     <input placeholder="Construido" class="textbox-n" type="text" onfocus="(this.type='date')" id="date" required>
+                                </div>
+
+                            </div>
+
+                            <div class="third-inner-container">
+
+                                <div class="left-column">
+
+                                    <div class="price-input">
+
+                                        <div class="price">
+
+                                            <div class="input-group">
+                                                <input type="number" name="price" id="price" required class="input">
+                                                <label class="user-label">Precio</label>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="currency">
+
+                                            <select name="currency" id="currency" required>
+                                                <option value="" selected disabled id="disable-currency">Tipo</option>
+                                                <option value="MXN">MXN</option>
+                                                <option value="USD">USD</option>
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="property-size">
+
+                                        <div class="input-group">
+                                            <input type="number" name="square-ft" id="square-ft" required class="input">
+                                            <label class="user-label">Metros²</label>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="phone-number">
+
+                                        <div class="input-group" id="phone_number">
+                                            <input type="tel" name="phone" id="phone" required class="input" maxlength="14">
+                                            <label class="user-label">Telefono</label>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="right-column">
+
+                                    <div class="bedrooms">
+
+                                        <div class="first-row">
+
+                                            <img src="/bedrooms-icon-gray.svg" alt="" id="bedrooms-icon">
+                                            <p id="bedrooms-title">Recámaras</p>
+
+                                        </div>
+
+                                        <div class="second-row">
+
+                                            <button type="button" id="minus-bedrooms"><p>-</p></button>
+
+                                            <p id="bedrooms">0</p>
+
+                                            <button type="button" id="plus-bedrooms"><p>+</p></button>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="bathrooms">
+
+                                        <div class="first-row">
+
+                                            <img src="/bathrooms-icon-gray.svg" alt="" id="bathrooms-icon">
+                                            <p id="bathrooms-title">Baños</p>
+
+                                        </div>
+
+                                        <div class="second-row">
+
+                                            <button type="button" id="minus-bathrooms"><p>-</p></button>
+
+                                            <p id="bathrooms">0</p>
+
+                                            <button type="button" id="plus-bathrooms"><p>+</p></button>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="garajes">
+
+                                        <div class="first-row">
+
+                                            <img src="/garajes-icon-gray.svg" alt="" id="garajes-icon">
+                                            <p id="garajes-title">Garajes</p>
+
+                                        </div>
+
+                                        <div class="second-row">
+
+                                            <button type="button" id="minus-garajes"><p>-</p></button>
+
+                                            <p id="garajes">0</p>
+
+                                            <button type="button" id="plus-garajes"><p>+</p></button>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="fourth-inner-container">
+
+                                <div class="container">
+
+                                    <div class="kitchen">
+
+                                        <img src="/kitchen-icon-gray.svg" alt="">
+                                        <p>Cocina</p>
+
+                                        <label class="switch">
+                                            <input type="checkbox" id="kitchen">
+                                            <span class="slider"></span>
+                                        </label>
+
+                                    </div>
+
+                                    <div class="washer">
+
+                                        <img src="/washer-icon-gray.svg" alt="">
+                                        <p>Lavadora</p>
+
+                                        <label class="switch">
+                                            <input type="checkbox" id="washer">
+                                            <span class="slider"></span>
+                                        </label>
+
+                                    </div>
+
+                                    <div class="ac">
+
+                                        <img src="/ac-icon-gray.svg" alt="">
+                                        <p>A/C</p>
+
+                                        <label class="switch">
+                                            <input type="checkbox" id="ac">
+                                            <span class="slider"></span>
+                                        </label>
+
+                                    </div>
+
+                                    <div class="gas">
+
+                                        <img src="/gas-icon-gray.svg" alt="">
+                                        <p>Gas</p>
+
+                                        <label class="switch">
+                                            <input type="checkbox" id="gas">
+                                            <span class="slider"></span>
+                                        </label>
+
+                                    </div>
+
+                                    <div class="pool">
+
+                                        <img src="/pool-icon-gray.svg" alt="">
+                                        <p>Piscina</p>
+
+                                        <label class="switch">
+                                            <input type="checkbox" id="pool">
+                                            <span class="slider"></span>
+                                        </label>
+
+                                    </div>
+
+                                    <div class="jacuzzi">
+
+                                        <img src="/jacuzzi-icon-gray.svg" alt="">
+                                        <p>Jacuzzi</p>
+
+                                        <label class="switch">
+                                            <input type="checkbox" id="jacuzzi">
+                                            <span class="slider"></span>
+                                        </label>
+
+                                    </div>
+
+                                    <div class="gym">
+
+                                        <img src="/gym-icon-gray.svg" alt="">
+                                        <p>Gimnasio</p>
+
+                                        <label class="switch">
+                                            <input type="checkbox" id="gym">
+                                            <span class="slider"></span>
+                                        </label>
+
+                                    </div>
+
+                                    <div class="garden">
+
+                                        <img src="/garden-icon-gray.svg" alt="">
+                                        <p>Jardín</p>
+
+                                        <label class="switch">
+                                            <input type="checkbox" id="garden">
+                                            <span class="slider"></span>
+                                        </label>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="fifth-inner-container">
+
+                                <div class="image-container">
+
+                                    <div class="image active" id="images-backcolor0">
+
+                                        <img class="output0" id="output0"></img>
+
+                                        <label for="image0" class="image0">
+                                            <img src="/images-request-icon.svg" alt="" id="camera-icon0">
+                                        </label>
+                                        <input type="file" name="" id="image0" accept="image/*" onchange="loadFile2(event)"></input>
+                                        <script src="/app/uploadImages.js"></script>
+
+                                    </div>
+
+                                    <div class="image active" id="images-backcolor1">
+
+                                        <img class="output1" id="output1"></img>
+
+                                        <label for="image1" class="image1">
+                                            <img src="/images-request-icon.svg" alt="" id="camera-icon1">
+                                        </label>
+                                        <input type="file" name="" id="image1" accept="image/*" onchange="loadFile3(event)"></input>
+                                        <script src="/app/uploadImages.js"></script>
+
+                                    </div>
+
+                                    <div class="image active" id="images-backcolor2">
+
+                                        <img class="output2" id="output2"></img>
+
+                                        <label for="image2" class="image2">
+                                            <img src="/images-request-icon.svg" alt="" id="camera-icon2">
+                                        </label>
+                                        <input type="file" name="" id="image2" accept="image/*" onchange="loadFile2(event)"></input>
+                                        <script src="/app/uploadImages.js"></script>
+                                    </div>
+
+                                    <div class="image active" id="images-backcolor3">
+
+                                        <img class="output3" id="output3"></img>
+
+                                        <label for="image3" class="image3">
+                                            <img src="/images-request-icon.svg" alt="" id="camera-icon3">
+                                        </label>
+                                        <input type="file" name="" id="image3" accept="image/*" onchange="loadFile2(event)"></input>
+                                        <script src="/app/uploadImages.js"></script>
+                                    </div>
+
+                                    <div class="image active" id="images-backcolor4">
+
+                                        <img class="output4" id="output4"></img>
+
+                                        <label for="image4" class="image4">
+                                            <img src="/images-request-icon.svg" alt="" id="camera-icon4">
+                                        </label>
+                                        <input type="file" name="" id="image4" accept="image/*" onchange="loadFile2(event)"></input>
+                                        <script src="/app/uploadImages.js"></script>
+                                    </div>
+
+                                    <div class="image active" id="images-backcolor5">
+
+                                        <img class="output5" id="output5"></img>
+
+                                        <label for="image5" class="image5">
+                                            <img src="/images-request-icon.svg" alt="" id="camera-icon5">
+                                        </label>
+                                        <input type="file" name="" id="image5" accept="image/*" onchange="loadFile2(event)"></input>
+                                        <script src="/app/uploadImages.js"></script>
+                                    </div>
+
                                 </div>
 
                             </div>
@@ -267,27 +566,8 @@
 
                             <div class="image-button">
                                 <input type="file" name="" id="files" accept="image/*" onchange="loadFile(event)"></input>
-                                <label for="files" class="button-images">Agregar Imagenes</label>
-                                <script>
-                                    var loadFile = function(event) {
-                                        var image = document.getElementById('output');
-                                        let final = document.getElementById('images-backcolor');
-                                        let camera = document.getElementById('camera-icon');
-                                        let output = document.getElementById('output');
-                                        let button = document.querySelector('.button-images');
-                                        let button_extra = document.querySelector('.image-button');
-                                        let currency = document.getElementById('MXN');
-                                        image.src = URL.createObjectURL(event.target.files[0]);
-                                        final.style.backgroundColor = "transparent";
-                                        camera.style.display = "none";
-                                        output.style.display = "block";
-                                        button.style.color = "#FF2E63";
-                                        button.style.border = "2px #FF2E63 solid";
-                                        button.style.backgroundColor = "transparent";
-                                        button_extra.style.paddingTop = "15%";
-                                        currency.style.display = "block";
-                                    };
-                                </script>
+                                <label for="files" class="button-images" >Agregar Imagenes</label>
+                                <script src="/app/uploadImages.js"></script>
                             </div>
 
                         </div>
@@ -296,8 +576,10 @@
 
                             <div class="section-title">
 
-                                    <h1 id="price">$ 450,000</h1>
-                                    <img src="./USD-32.png" alt="" id="MXN">
+                                    <h1 id="price-card">$ 0</h1>
+                                    <img src="./USD-32.png" alt="" id="USD">
+                                    <img src="/MXN-32.png" alt="" id="MXN">
+
 
                             </div>
 
@@ -305,45 +587,39 @@
 
                                 <div class="first-row">
 
-                                    <p>4 Recámaras</p>
+                                    <p id="bedrooms-card">0 Recámara</p>
 
                                     <p class="divider">│­</p>
 
-                                    <p>2 Baños</p>
+                                    <p id="bathrooms-card">0 Baño</p>
 
                                     <p class="divider">│­</p>
 
-                                    <p >1 Garaje</p>
+                                    <p id="garajes-card">0 Garaje</p>
 
                                     <p class="divider">│­</p>
 
-                                    <p>1,950 M­²</p>
+                                    <p id="square-ft-card">0 M­²</p>
 
                                 </div>
 
                                 <div class="second-row">
 
-                                    <p>Cocina</p>
+                                    <img src="/kitchen-icon.svg" alt="" id="kitchen-card" class="image active">
 
-                                    <p class="divider">∙­</p>
+                                    <img src="/washer-icon.svg" alt="" id="washer-card" class="image active">
 
-                                    <p>Lavadora</p>
+                                    <img src="/ac-icon.svg" alt="" id="ac-card" class="image active">
 
-                                    <p class="divider">∙­</p>
+                                    <img src="/gas-icon.svg" alt="" id="gas-card" class="image active">
 
-                                    <p>Gimnasio</p>
+                                    <img src="/pool-icon.svg" alt="" id="pool-card" class="image active">
 
-                                    <p class="divider">∙­</p>
+                                    <img src="/jacuzzi-icon.svg" alt="" id="jacuzzi-card" class="image active">
 
-                                    <p>A/C</p>
+                                    <img src="/gym-icon.svg" alt="" id="gym-card" class="image active">
 
-                                    <p class="divider">∙­</p>
-
-                                    <p>Gas</p>
-
-                                    <p class="divider">∙­</p>
-
-                                    <p>Jardín</p>
+                                    <img src="/garden-icon.svg" alt="" id="garden-card" class="image active">
 
                                 </div>
 
@@ -351,9 +627,9 @@
 
                             <div class="property-location">
 
-                                <p id="location">Cancún, Quintana Roo</p>
+                                <p id="location-card"></p>
 
-                                <p id="address">Av. Bonampak 1, Cancún, Quintana Roo</p>
+                                <p id="address-card"></p>
 
                             </div>
 
@@ -361,11 +637,11 @@
 
                                 <div class="tags">
 
-                                    <div class="tag" id="sell">Venta</div>
+                                    <div class="tag" id="sell-card">Venta</div>
 
-                                    <div class="tag" id="rent">Renta</div>
+                                    <div class="tag" id="rent-card">Renta</div>
 
-                                    <div class="tag" id="urgent">Urgente</div>
+                                    <div class="tag" id="urgent-card">Urgente</div>
 
                                 </div>
 
@@ -382,6 +658,82 @@
                             </div>
 
                         </div>
+
+                    </div>
+
+                </div>
+
+                <div class="second-row">
+
+                    <div class="container">
+
+                        <div class="privacy">
+
+                            <div class="privacy-icon">
+
+                                <img src="/privacy-icon.svg" alt="">
+
+                            </div>
+
+                            <div class="privacy-row">
+
+                                <div class="button">
+
+                                    <p>Privacidad</p>
+
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+
+                                </div>
+
+                                <div class="info">
+
+                                    <p>Al seleccionar esta opción no se mostrará tu nombre ni número de celular, los usuarios solo podrán contactarte por E-mail.</p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="urgent">
+
+                            <div class="urgent-icon">
+
+                                <img src="/urgent-icon.svg" alt="">
+
+                            </div>
+
+                            <div class="urgent-row">
+
+                                <div class="button">
+
+                                    <p>Urgente</p>
+
+                                    <label class="switch">
+                                        <input type="checkbox" id="urgent">
+                                        <span class="slider"></span>
+                                    </label>
+
+                                </div>
+
+                                <div class="info">
+
+                                    <p>Al seleccionar esta opción tu anuncio aparecerá al inicio de la lista en las búsquedas de tu ciudad, esto tiene un costó extra de $200 MXN.</p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="publish">
+
+                    <button>Publicar</button>
 
                     </div>
 

@@ -413,11 +413,11 @@ body {
 .navbar {
     width: 100%;
     height: 64px;
+    background-color: var(--White);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--White);
     padding-left: 108px;
     padding-right: 108px;
     z-index: 0;
@@ -433,12 +433,11 @@ body {
 }
 
 .menu {
-    width: 50%;
+    width: 235px;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 40px;
+    justify-content: space-between;
 }
 
 .menu a {
@@ -448,10 +447,6 @@ body {
     font-weight: 500;
     line-height: 19px;
     transition: .2s;
-}
-
-.menu #create {
-    display: none;
 }
 
 .menu a:hover {
@@ -534,10 +529,10 @@ body {
 
 .user-loggedIn {
     height: 65%;
-    width: 14.5%;
+    width: 10%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     cursor: default;
 }
 
@@ -553,20 +548,25 @@ body {
     display: none;
 }
 
+.user-loggedIn .img4 {
+    display: none;
+}
+
 .user-loggedIn img {
-    width: 17%;
+    width: 25%;
     border-radius: 50%;
     cursor: default;
 }
 
 .user-loggedIn .user-options-inner {
-    width: 83%;
+    width: 65%;
     height: 100%;
     padding-left: 8px;
     padding-right: 8px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .user-loggedIn .user-options-inner p:nth-child(1) {
@@ -583,24 +583,157 @@ body {
     transition: .2s;
 }
 
-.user-loggedIn .user-options-inner .user-logout {
-    width: 25%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.user-loggedIn .user-options-inner .user-logout i {
-    font-size: 32px;
-    color: var(--Gray-Dark);
-    cursor: pointer;
-    padding-top: 12%;
+.user-loggedIn .user-options-inner p:nth-child(2):hover {
+    color: var(--Pink-Hard);
     transition: .2s;
 }
 
-.user-loggedIn .user-options-inner .user-logout i:hover {
+.user-loggedIn-Dropdown.active {
+    display: none;
+}
+
+.user-loggedIn-Dropdown {
+    position: absolute;
+    right: 5.5%;
+    top: 7.5%;
+    width: 170px;
+    height: 150px;
+    border-radius: 4px;
+    background-color: var(--White);
+    cursor: default;
+    border: 2px solid var(--Pink-Hard);
+}
+
+.user-loggedIn-Dropdown .dashboard {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 16px;
+    gap: 16px;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.user-loggedIn-Dropdown .dashboard .dashboard-icon {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.user-loggedIn-Dropdown .dashboard p{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--Gray-Dark);
+    transition: .2s;
+}
+
+.user-loggedIn-Dropdown .dashboard:hover .dashboard-icon img {
+    filter: brightness(0) saturate(100%) invert(42%) sepia(56%) saturate(7294%) hue-rotate(327deg) brightness(101%) contrast(102%);
+}
+
+.user-loggedIn-Dropdown .dashboard:hover p {
     color: var(--Pink-Hard);
+}
+
+.user-loggedIn-Dropdown .create-publication {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 16px;
+    gap: 16px;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.user-loggedIn-Dropdown .create-publication .create-publication-icon {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.user-loggedIn-Dropdown .create-publication a{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--Gray-Dark);
+    transition: .2s;
+    text-decoration: none;
+}
+
+.user-loggedIn-Dropdown .create-publication:hover .create-publication-icon img {
+    filter: brightness(0) saturate(100%) invert(42%) sepia(56%) saturate(7294%) hue-rotate(327deg) brightness(101%) contrast(102%);
+}
+
+.user-loggedIn-Dropdown .create-publication:hover a {
+    color: var(--Pink-Hard);
+}
+
+.user-loggedIn-Dropdown .my-profile {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 16px;
+    gap: 16px;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.user-loggedIn-Dropdown .my-profile .my-profile-icon {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.user-loggedIn-Dropdown .my-profile p{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--Gray-Dark);
+    transition: .2s;
+}
+
+.user-loggedIn-Dropdown .my-profile:hover .my-profile-icon img {
+    filter: brightness(0) saturate(100%) invert(42%) sepia(56%) saturate(7294%) hue-rotate(327deg) brightness(101%) contrast(102%);
+}
+
+.user-loggedIn-Dropdown .my-profile:hover p {
+    color: var(--Pink-Hard);
+}
+
+.user-loggedIn-Dropdown .logout {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 16px;
+    gap: 16px;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.user-loggedIn-Dropdown .logout .logout-icon {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.user-loggedIn-Dropdown .logout:hover .logout-icon img {
+    filter: brightness(0) saturate(100%) invert(42%) sepia(56%) saturate(7294%) hue-rotate(327deg) brightness(101%) contrast(102%);
+}
+
+.user-loggedIn-Dropdown .logout:hover p {
+    color: var(--Pink-Hard);
+}
+
+.user-loggedIn-Dropdown .logout p{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--Gray-Dark);
     transition: .2s;
 }
 

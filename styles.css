@@ -329,16 +329,74 @@ body {
     justify-content: space-between;
 }
 
-.loginrequest .login .container .first-row input {
+.loginrequest .login .container .first-row .input-group {
+    position: relative;
+}
+
+.loginrequest .login .container .first-row .input-group .input {
     width: 385px;
     height: 48px;
     border: 2px solid #EFF0F3;
     border-radius: 8px;
-    padding-left: 10px;
-    font-size: 16px;
-    font-weight: 400;
+    background: none;
+    padding: 1rem;
+    font-size: 1rem;
     color: var(--Gray-Dark);
+    transition: border 150ms cubic-bezier(0.4,0,0.2,1);
 }
+
+.loginrequest .login .container .first-row .input-group .user-label {
+    position: absolute;
+    left: 15px;
+    color: var(--Gray-Dark);
+    pointer-events: none;
+    transform: translateY(1rem);
+    background-color: transparent;
+    transition: 150ms cubic-bezier(0.4,0,0.2,1);
+    font-weight: 400;
+}
+
+.loginrequest .login .container .first-row .input-group .input:focus {
+    outline: none;
+    border: 2px solid transparent;
+}
+
+.loginrequest .login .container .first-row .input-group .input:focus ~ label {
+    transform: translateY(-50%) scale(0.9);
+    background-color: var(--White);
+    padding: 0 .5em;
+    color: var(--Pink-Hard);
+}
+
+.loginrequest .login .container .first-row .input-group .input:valid:focus {
+    border: 2px solid var(--Pink-Hard);
+}
+
+.loginrequest .login .container .first-row .input-group .input:valid {
+    border: 2px solid var(--Pink-Hard);
+}
+
+.loginrequest .login .container .first-row .input-group .input:valid ~ label {
+    transform: translateY(-50%) scale(0.9);
+    background-color: var(--White);
+    padding: 0 .5em;
+    font-weight: 500;
+    color: var(--Pink-Hard);
+}
+
+.loginrequest .login .container .first-row .input-group .input:invalid:focus {
+    outline: none;
+    border: 2px solid #FFAB2E;
+}
+
+.loginrequest .login .container .first-row .input-group .input:invalid:focus  ~ label {
+    transform: translateY(-50%) scale(0.9);
+    background-color: var(--White);
+    padding: 0 .5em;
+    font-weight: 500;
+    color: #FFAB2E;
+}
+
 
 .loginrequest .login .container .second-row {
     width: 100%;
@@ -349,15 +407,72 @@ body {
     justify-content: space-between;
 }
 
-.loginrequest .login .container .second-row input {
+.loginrequest .login .container .second-row .input-group {
+    position: relative;
+}
+
+.loginrequest .login .container .second-row .input-group .input {
     width: 385px;
     height: 48px;
     border: 2px solid #EFF0F3;
     border-radius: 8px;
-    padding-left: 10px;
-    font-size: 16px;
-    font-weight: 400;
+    background: none;
+    padding: 1rem;
+    font-size: 1rem;
     color: var(--Gray-Dark);
+    transition: border 150ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.loginrequest .login .container .second-row .input-group .user-label {
+    position: absolute;
+    left: 15px;
+    color: var(--Gray-Dark);
+    pointer-events: none;
+    transform: translateY(1rem);
+    background-color: transparent;
+    transition: 150ms cubic-bezier(0.4,0,0.2,1);
+    font-weight: 400;
+}
+
+.loginrequest .login .container .second-row .input-group .input:focus {
+    outline: none;
+    border: 2px solid transparent;
+}
+
+.loginrequest .login .container .second-row .input-group .input:focus ~ label {
+    transform: translateY(-50%) scale(0.9);
+    background-color: var(--White);
+    padding: 0 .5em;
+    color: var(--Pink-Hard);
+}
+
+.loginrequest .login .container .second-row .input-group .input:valid:focus {
+    border: 2px solid var(--Pink-Hard);
+}
+
+.loginrequest .login .container .second-row .input-group .input:valid {
+    border: 2px solid var(--Pink-Hard);
+}
+
+.loginrequest .login .container .second-row .input-group .input:valid ~ label {
+    transform: translateY(-50%) scale(0.9);
+    background-color: var(--White);
+    padding: 0 .5em;
+    font-weight: 500;
+    color: var(--Pink-Hard);
+}
+
+.loginrequest .login .container .second-row .input-group .input:invalid:focus {
+    outline: none;
+    border: 2px solid #FFAB2E;
+}
+
+.loginrequest .login .container .second-row .input-group .input:invalid:focus  ~ label {
+    transform: translateY(-50%) scale(0.9);
+    background-color: var(--White);
+    padding: 0 .5em;
+    font-weight: 500;
+    color: #FFAB2E;
 }
 
 .loginrequest .login .container .connectAccount {
@@ -531,10 +646,10 @@ body {
 
 .user-loggedIn {
     height: 65%;
-    width: 14.5%;
+    width: 10%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     cursor: default;
 }
 
@@ -555,19 +670,20 @@ body {
 }
 
 .user-loggedIn img {
-    width: 17%;
+    width: 25%;
     border-radius: 50%;
     cursor: default;
 }
 
 .user-loggedIn .user-options-inner {
-    width: 83%;
+    width: 65%;
     height: 100%;
     padding-left: 8px;
     padding-right: 8px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .user-loggedIn .user-options-inner p:nth-child(1) {
@@ -584,30 +700,158 @@ body {
     transition: .2s;
 }
 
-.user-loggedIn .user-options-inner .user-logout {
-    width: 25%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.user-loggedIn .user-options-inner .user-logout i {
-    font-size: 32px;
-    color: var(--Gray-Dark);
-    cursor: pointer;
-    padding-top: 12%;
-    transition: .2s;
-}
-
-.user-loggedIn .user-options-inner .user-logout i:hover {
+.user-loggedIn .user-options-inner p:nth-child(2):hover {
     color: var(--Pink-Hard);
     transition: .2s;
 }
 
+.user-loggedIn-Dropdown.active {
+    display: none;
+}
 
+.user-loggedIn-Dropdown {
+    position: absolute;
+    right: 5.5%;
+    top: 7.5%;
+    width: 170px;
+    height: 150px;
+    border-radius: 4px;
+    background-color: var(--White);
+    cursor: default;
+}
 
+.user-loggedIn-Dropdown .dashboard {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 16px;
+    gap: 16px;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
 
+.user-loggedIn-Dropdown .dashboard .dashboard-icon {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.user-loggedIn-Dropdown .dashboard p{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--Gray-Dark);
+    transition: .2s;
+}
+
+.user-loggedIn-Dropdown .dashboard:hover .dashboard-icon img {
+    filter: brightness(0) saturate(100%) invert(42%) sepia(56%) saturate(7294%) hue-rotate(327deg) brightness(101%) contrast(102%);
+}
+
+.user-loggedIn-Dropdown .dashboard:hover p {
+    color: var(--Pink-Hard);
+}
+
+.user-loggedIn-Dropdown .create-publication {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 16px;
+    gap: 16px;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.user-loggedIn-Dropdown .create-publication .create-publication-icon {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.user-loggedIn-Dropdown .create-publication a{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--Gray-Dark);
+    transition: .2s;
+    text-decoration: none;
+}
+
+.user-loggedIn-Dropdown .create-publication:hover .create-publication-icon img {
+    filter: brightness(0) saturate(100%) invert(42%) sepia(56%) saturate(7294%) hue-rotate(327deg) brightness(101%) contrast(102%);
+}
+
+.user-loggedIn-Dropdown .create-publication:hover a {
+    color: var(--Pink-Hard);
+}
+
+.user-loggedIn-Dropdown .my-profile {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 16px;
+    gap: 16px;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.user-loggedIn-Dropdown .my-profile .my-profile-icon {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.user-loggedIn-Dropdown .my-profile p{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--Gray-Dark);
+    transition: .2s;
+}
+
+.user-loggedIn-Dropdown .my-profile:hover .my-profile-icon img {
+    filter: brightness(0) saturate(100%) invert(42%) sepia(56%) saturate(7294%) hue-rotate(327deg) brightness(101%) contrast(102%);
+}
+
+.user-loggedIn-Dropdown .my-profile:hover p {
+    color: var(--Pink-Hard);
+}
+
+.user-loggedIn-Dropdown .logout {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 16px;
+    gap: 16px;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.user-loggedIn-Dropdown .logout .logout-icon {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.user-loggedIn-Dropdown .logout:hover .logout-icon img {
+    filter: brightness(0) saturate(100%) invert(42%) sepia(56%) saturate(7294%) hue-rotate(327deg) brightness(101%) contrast(102%);
+}
+
+.user-loggedIn-Dropdown .logout:hover p {
+    color: var(--Pink-Hard);
+}
+
+.user-loggedIn-Dropdown .logout p{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--Gray-Dark);
+    transition: .2s;
+}
 
 
 /* HERO */
