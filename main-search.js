@@ -185,6 +185,30 @@ userMenu.addEventListener("click", () => {
     });
 });
 
+
+
+
+
+
+
+
+let outstanding_1 = document.getElementById("outstanding-one");
+
+outstanding_1.addEventListener("click", () => {
+    window.location.href = 'property.html';
+});
+
+
+
+
+
+
+
+
+
+
+
+
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         document.querySelector('.user-loggedIn').classList.toggle('active');

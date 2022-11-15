@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1.0, initial-scale=1.0">
+    <title>Patio Inmobiliario │ Búsquedas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./property.css">
+    <link rel="icon" href="favicon.png">
+    <script src="./main-property.js" type="module"></script>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+
+    <div class="main-container">
+
+        <div class="request active" id="body">
+
+            <div class="signup">
+
+                <button class="close-signup" id="closesignup">
+                    <i class='bx bx-x'></i>
+                </button>
+
+                <div class="title">
+                    Registrate
+                </div>
+
+                <div class="form">
+
+                    <form action="signup" id="signup-form">
+
+                        <div class="container">
+
+                            <div class="first-row">
+
+                                <div class="input-container">
+                                    <input type="text" name="name" id="name" required placeholder="Nombres">
+                                </div>
+
+                                <div class="input-container">
+                                    <input type="text" name="last-name" id="last-name" required placeholder="Apellidos">
+                                </div>
+
+                            </div>
+
+                            <div class="second-row">
+
+                                <div class="input-container">
+                                    <input type="date" name="bday" id="bday" required>
+                                </div>
+
+                            </div>
+
+                            <div class="third-row">
+
+                                <div class="input-container">
+                                    <input type="text" name="email" id="email" required placeholder="Correo Electronico">
+                                </div>
+
+                            </div>
+
+                            <div class="fourth-row">
+
+                                <div class="input-container">
+                                    <input type="password" name="password" id="password" required placeholder="Contraseña">
+                                </div>
+
+                            </div>
+
+                            <div class="fifth-row">
+
+                                <div class="card">
+                                    <img src="./individual.png" alt="">
+                                    <p>Individual</p>
+                                </div>
+
+                                <div class="card">
+                                    <img src="./empresa.png" alt="">
+                                    <p>Empresa</p>
+                                </div>
+
+                                <div class="card">
+                                    <img src="./desarrolladora.png" alt="">
+                                    <p>Desarrolladora</p>
+                                </div>
+
+                            </div>
+
+                            <button class="createAccount" id="createAccount" type="submit">Crear Cuenta</button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="loginrequest active" id="loginrq">
+
+            <div class="login">
+
+                <button class="close-login" id="closelogin2">
+                    <i class='bx bx-x'></i>
+                </button>
+
+                <div class="title">
+                    Iniciar Sesión
+                </div>
+
+                <div class="form">
+
+                    <form action="login" id="login-form">
+
+                        <div class="container">
+
+                            <div class="first-row">
+
+                                <div class="input-group">
+                                    <input type="email" name="login-email" id="login-email" required class="input">
+                                    <label class="user-label">Correo Electronico</label>
+                                </div>
+
+                            </div>
+
+                            <div class="second-row">
+
+                                <div class="input-group">
+                                    <input type="password" name="login-password" id="login-password" required class="input" minlength="6">
+                                    <label class="user-label">Contraseña</label>
+                                </div>
+
+                            </div>
+
+                            <button class="connectAccount" id="loginAccount" type="submit">Conectarse</button>
+
+                            <p>Olvidaste tu contraseña?</p>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="navbar">
+            <div class="logo" id="patioinmb">
+                <img src="./logo.png" alt="logo">
+            </div>
+            <div class="menu">
+                    <a href="#">Acerca De</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Contacto</a>
+            </div>
+
+            <div class="user-options active">
+                <div class="logIn" id="login">
+                    <a href="#">Iniciar Sesión</a>
+                    <img src="./logIn-Icon.svg">
+                </div>
+                <div class="signUp">
+                    <a href="#" id="register">Registrarse</a>
+                </div>
+            </div>
+
+            <div class="user-loggedIn active">
+
+                <img class="img1" src="./user.jpg" alt="" id="userImage">
+
+                <img class="img2" src="./img2.png" alt="" id="userImage">
+
+                <img class="img3" src="./user.jpg" alt="" id="userImage">
+
+                <img class="img4" src="./Marco.jpeg" alt="" id="userImage">
+
+                <div class="user-options-inner">
+
+                    <div class="user-details" id="userProfile">
+                        <p id="role">Realtor</p>
+                        <p id="auth-user"></p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="user-loggedIn-Dropdown active" id="userProfile">
+
+                <div class="dashboard">
+
+                    <div class="dashboard-icon">
+                        <img src="./dashboard-icon.svg" alt="">
+                    </div>
+
+                    <div class="dashboard-text">
+                        <p>Dashboard</p>
+                    </div>
+
+                </div>
+
+                <div class="create-publication">
+
+                    <div class="create-publication-icon">
+                        <img src="./form-icon.svg" alt="">
+                    </div>
+
+                    <div class="create-publication-text">
+                        <a href="./createForm.html">Crear Anuncio</a>
+                    </div>
+
+                </div>
+
+                <div class="my-profile">
+
+                    <div class="my-profile-icon">
+                        <img src="./profile-icon.svg" alt="">
+                    </div>
+
+                    <div class="myprofile-text">
+                        <p>Perfil</p>
+                    </div>
+
+                </div>
+
+                <div class="logout" id="logout">
+
+                    <div class="logout-icon">
+                        <img src="/logout-icon.svg" alt="">
+                    </div>
+
+                    <div class="logout-text">
+                        <p>Cerrar sesión</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="first-section">
+
+                <div class="images">
+
+                    <div class="main-image">
+
+                        <img src="HOUSE-TEST.png" alt="" id="main-image">
+
+                    </div>
+
+                    <div class="side-images">
+
+                        <div class="image">
+                            <img src="HOUSE-TEST-ONE.png" alt="" id="side-image">
+                        </div>
+
+                        <div class="image">
+                            <img src="HOUSE-TEST-TWO.png" alt="" id="side-image">
+                        </div>
+
+                        <div class="image">
+                            <img src="HOUSE-TEST-THREE.png" alt="" id="side-image">
+                        </div>
+
+                        <div class="image">
+                            <img src="HOUSE-TEST-FOUR.png" alt="" id="side-image">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="information">
+
+                    <div class="house-first-row">
+
+                        <div class="location">
+                            <p>Mascota, Jalisco.</p>
+                        </div>
+
+                        <div class="inner-second-row">
+
+                            <div class="address">
+                                <h1>Fraccionamiento Leandro Valle</h1>
+                            </div>
+
+                            <div class="price-row">
+
+                                <div class="price">
+                                    <p id="price-title">$3,500,000</p>
+                                </div>
+
+                                <div class="price-tag">
+                                    <img src="./MXN-32.png" alt="">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="house-second-row">
+
+                        <div class="first-container">
+
+                            <div class="basic-info">
+
+                                <div class="title">
+                                    <p>Informacion Basica</p>
+                                </div>
+
+                                <div class="info-details">
+
+                                    <div class="bedrooms">
+
+                                        <img src="/bedrooms-icon-gray-24.svg" alt="">
+                                        <p>3 Recamarás</p>
+
+                                    </div>
+
+                                    <div class="bathrooms">
+
+                                        <img src="/bathrooms-icon-gray-24.svg" alt="">
+                                        <p>2 Baños</p>
+
+                                    </div>
+
+                                    <div class="size">
+
+                                        <img src="/size-icon-gray-24.png" alt="">
+                                        <p>1,500 M²</p>
+
+                                    </div>
+
+                                    <div class="construction">
+
+                                        <img src="/construction-icon-gray-24.svg" alt="">
+                                        <p>Construido en 2015</p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="home-details">
+
+                                <div class="title">
+                                    <p>Detalles de la propiedad</p>
+                                </div>
+
+                                <div class="info-details">
+
+                                    <div class="kitchen active">
+
+                                        <img src="/kitchen-icon-gray-24.svg" alt="">
+                                        <p>Cocina</p>
+
+                                    </div>
+
+                                    <div class="gym active">
+
+                                        <img src="/gym-icon-gray-24.svg" alt="">
+                                        <p>Gym</p>
+
+                                    </div>
+
+                                    <div class="washer active">
+
+                                        <img src="/washer-icon-gray-24.svg" alt="">
+                                        <p>Lavadora</p>
+
+                                    </div>
+
+                                    <div class="garaje active">
+
+                                        <img src="/garajes-icon-gray-24.svg" alt="">
+                                        <p>Garaje</p>
+
+                                    </div>
+
+                                    <div class="pool active">
+
+                                        <img src="/pool-icon-gray-24.svg" alt="">
+                                        <p>Piscina</p>
+
+                                    </div>
+
+                                    <div class="ac active">
+
+                                        <img src="/ac-icon-gray-24.svg" alt="">
+                                        <p>A/C</p>
+
+                                    </div>
+
+                                    <div class="gas active">
+
+                                        <img src="/gas-icon-gray-24.svg" alt="">
+                                        <p>Gas</p>
+
+                                    </div>
+
+                                    <div class="garden active">
+
+                                        <img src="/garden-icon-gray-24.svg" alt="">
+                                        <p>Jardin</p>
+
+                                    </div>
+
+                                    <div class="jacuzzi active">
+
+                                        <img src="/jacuzzi-icon-gray-24.svg" alt="">
+                                        <p>Jacuzzi</p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="contact-seller">
+
+                                <div class="title">
+                                    <p>Contactar al vendedor</p>
+                                </div>
+
+                                <div class="container-row">
+
+                                    <div class="phone">
+
+                                        <img src="/phone-icon.svg" alt="">
+                                        <p>Teléfono</p>
+
+                                    </div>
+
+                                    <div class="whatsapp">
+
+                                        <img src="/whatsapp-icon.svg" alt="">
+                                        <p>Whatsapp</p>
+
+                                    </div>
+
+                                    <div class="email">
+
+                                        <img src="/email-icon.svg" alt="">
+                                        <p>Correo</p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="map">
+
+                            <img src="/HOUSE-TEST-MAP.png" alt="">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="second-section">
+
+                <div class="first-container">
+
+                    <div class="title">
+                        <h1>Calcula tu préstamo hipotecario</h1>
+                    </div>
+
+                    <div class="first-row">
+
+                        <div class="input-group1">
+                            <input type="number" name="price" id="price-loan" required readonly class="input">
+                            <label class="user-label">Precio</label>
+                        </div>
+
+                        <div class="input-group2">
+                            <select name="loan-years" id="loan-years" class="select">
+                                <option value="5">5 años</option>
+                                <option value="10">10 años</option>
+                                <option value="15">15 años</option>
+                                <option value="20">20 años</option>
+                                <option value="25">25 años</option>
+                                <option value="30">30 años</option>
+                            </select>
+                            <img src="/dropdownSelect-icon.svg" alt="" class="arrow" id="arrow">
+                            <label class="user-label">Plazo a pagar</label>
+                        </div>
+
+                    </div>
+
+                    <div class="second-row">
+
+                        <div class="title">
+                            <h2>¿Cuánto crédito necesitas?</h2>
+                        </div>
+
+                        <div class="first-inner-row">
+
+                            <div class="amount">
+
+                                <img src="/coin-icon.svg" alt="">
+
+                                <p id="loan-amount"></p>
+
+                            </div>
+
+                            <div class="percentage">
+
+                                <p id="percentage">50%</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="second-inner-row">
+
+                            <div class="slider">
+                                <input id="loan2" type="range" name="loan-amount" class="slider_input">
+                            </div>
+
+                        </div>
+
+                        <div class="third-inner-row">
+
+                            <p>El préstamo mínimo usualmente es del 10%</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="second-container">
+
+                    <div class="title">
+                        <h1>Para adquirir esta propiedad</h1>
+                    </div>
+
+                    <div class="first-content">
+
+                        <div class="left-row">
+
+                            <div class="monthy-payment">
+
+                                <div class="first-row">
+
+                                    <div class="icon"></div>
+
+                                    <p>Pago mensual</p>
+
+                                </div>
+
+                                <div class="second-row">
+
+                                    <p id="monthly-payment">$123,123 MXN</p>
+
+                                </div>
+
+                            </div>
+
+                            <div class="monthy-earnings">
+
+                                <div class="first-row">
+
+                                    <div class="icon"></div>
+
+                                    <p>Necesitas un ingreso de</p>
+
+                                </div>
+
+                                <div class="second-row">
+
+                                    <p id="monthly-earnings">$123,123 MXN</p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="right-row">
+
+                                <img src="/30-percent.png" alt="">
+
+                        </div>
+
+                    </div>
+
+                    <div class="last-content">
+
+                        <p>*Estos valores están calculados a una tasa del 10%</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

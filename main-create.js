@@ -9,6 +9,10 @@ import './app/dbDocuments.js';
 import './app/LogIn.js';
 import './app/logout.js';
 
+
+
+
+
 document.getElementById('property').addEventListener('change', function() {
     let type = document.getElementById('property').value;
     innerText();
@@ -466,6 +470,7 @@ onAuthStateChanged(auth, async (user) => {
         }
 
     } else {
+        window.location.href = "index.html";
     }
 
 });
