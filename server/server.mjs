@@ -74,15 +74,32 @@ home.on("connection", (socket) => {
 
         const propertiesWithBase64Images = result.map((property) => {
             const images = Array.isArray(property.images)
-              ? property.images.map((image) => {
-                  const base64 = Buffer.from(image.buffer).toString("base64");
-                  return { ...image, base64 };
+                ? property.images.map((image) => {
+                    const base64 = Buffer.from(image.buffer).toString("base64");
+                    return { ...image, base64 };
                 })
-              : [];
+                : [];
             return { ...property, images };
-          });
+        });
 
         socket.emit("loadProperties", propertiesWithBase64Images);
+    });
+
+    socket.on('property-details', (data) => {
+        console.log(data);
+
+        const collection = db.db('PatioInmobiliario').collection('properties');
+
+        collection.findOne({ _id: new ObjectId(data.id) }, (err, result) => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+
+
+
+            socket.emit('property-details', result);
+        });
     });
 });
 

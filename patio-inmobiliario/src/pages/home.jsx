@@ -25,14 +25,7 @@ function Home() {
           <span className="loader"></span>
         ) : (
           properties.map((property) => (
-            <Link
-              key={property._id}
-              to={{
-                pathname: `/properties/${property._id}`,
-                state: { property },
-              }}
-              className="link-no-underline"
-            >
+            <Link key={property._id} to={`/propiedades/${property._id}`} className='link-no-underline'>
               <div className="card">
                 <div
                   className="card_image"

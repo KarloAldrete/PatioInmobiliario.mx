@@ -27,7 +27,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/create" element={<Form />} />
-          <Route path="/properties/:id" element={<Property />} />
+          <Route path="/propiedades/:id" element={<Property />} />
           <Route path="*" element={<Invalid />} />
         </Routes>
       </Router>
