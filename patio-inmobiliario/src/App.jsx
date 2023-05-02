@@ -6,15 +6,13 @@ import Property from './pages/property';
 import Payment from './pages/payment';
 import Invalid from './pages/404';
 
-import { CartProvider } from './context/CartContext';
-
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
-    <CartProvider >
+    <>
         <ToastContainer
           position="bottom-left"
           autoClose={5000}
@@ -36,7 +34,7 @@ function App() {
           <Route path="*" element={<Invalid />} />
         </Routes>
       </Router>
-      </CartProvider>
+      </>
   );
 }
 

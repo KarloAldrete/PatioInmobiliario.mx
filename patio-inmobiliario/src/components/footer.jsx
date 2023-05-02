@@ -1,7 +1,7 @@
 import React from "react";
 import '../styles/footer.css'
 
-import logo from '../images/logo.svg'
+import logo from '../images/logo.png'
 import facebook from '../images/facebook.svg'
 import instagram from '../images/instagram.svg'
 import twitter from '../images/twitter.svg'
@@ -11,35 +11,56 @@ const Footer = () => {
     return (
         <footer className="footer">
 
-            <div className="footer_container">
+            <div className="first-container">
 
-                <div className="footer_container_logo">
+                <div className="logo-container">
 
-                    <img src={logo} alt="logo" />
+                    <img src={logo} alt="logo" className="logo" />
 
-                </div>
-
-                <div className="footer_container_info">
-
-                    <p>© 2023 Patio Inmobiliario</p>
+                    <span>La llave maestra para vender propiedades</span>
 
                 </div>
 
-                <div className="footer_container_social">
+                <div className="extras-container">
 
-                    <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">
-                        <img src={facebook} alt="facebook" />
-                    </a>
+                    <div className="content">
 
-                    <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
-                        <img src={instagram} alt="instagram" />
-                    </a>
+                        <span>Inicio de sesión</span>
 
-                    <a href="https://twitter.com/" target="_blank" rel="noreferrer">
-                        <img src={twitter} alt="twitter" />
-                    </a>
+                        <span>Precios</span>
+
+                    </div>
+
+                    <div className="content">
+
+                        <span>Nosotros</span>
+
+                        <span>Blog</span>
+
+                    </div>
+
+                    <div className="content">
+
+                        <div className="social-media">
+
+                            <img src={facebook} alt="facebook" className="social-media-icon" />
+
+                            <img src={instagram} alt="instagram" className="social-media-icon" />
+
+                            <img src={twitter} alt="twitter" className="social-media-icon" />
+
+                        </div>
+
+                        <span>contacto@patioinmobiliario.com</span>
+                    </div>
 
                 </div>
+
+            </div>
+
+            <div className="second-container">
+
+                <span>Copyright @2023 Patio Inmobiliario, Inc. All rights reserved</span>
 
             </div>
 

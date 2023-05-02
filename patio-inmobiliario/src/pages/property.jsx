@@ -21,6 +21,10 @@ import build from "../images/build.svg";
 import mxn from "../images/mxn.svg";
 import usd from "../images/usd.svg";
 
+import user from "../images/user.svg";
+import phone from "../images/cellphone.svg";
+import email from "../images/email.svg";
+
 const socket = io("http://localhost:4000/home");
 
 function Property() {
@@ -251,23 +255,56 @@ function Property() {
 
               <div className="contact">
 
-                <div className="name">
+                <div className="item">
+
+                  <img src={user} alt="user" />
 
                   <p>{propertyInfo?.propName}</p>
 
                 </div>
 
-                <div className="email">
+                <div className="item">
+
+                  <img src={phone} alt="phone" />
+
+                  <p>{propertyInfo?.propPhone}</p>
+
+                </div>
+
+                <div className="item">
+
+                  <img src={email} alt="email" />
 
                   <p>{propertyInfo?.propEmail}</p>
 
                 </div>
 
-                <div className="phone">
+              </div>
 
-                  <p>{propertyInfo?.propPhone}</p>
+            </div>
 
-                </div>
+            <div className="get-info-module">
+
+              <div className="title">
+
+                <h1>Recibe más información</h1>
+
+              </div>
+
+              <div className="form">
+              </div>
+
+              <div className="terms-and-conditions">
+
+                <input type="checkbox" className="checkbox" />
+
+                <p>Acepto <a>términos y condiciones generales</a> y la <a>política de tratamiento de datos</a>.</p>
+
+              </div>
+
+              <div className="submit">
+
+                <button className="button is-primary">Hablar con asesor</button>
 
               </div>
 

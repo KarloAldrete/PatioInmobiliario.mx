@@ -12,7 +12,7 @@ const stripe = new stripePackage('sk_test_51JEIObC0PsLvELgeOk7nfQu1YLKcUbNQPIrfh
 const app = express();
 
 app.use(cors({
-    origin: 'http://127.0.0.1:5173',
+    origin: 'http://localhost:5173',
 }));
 app.use(morgan('combined'));
 app.use(express.json());
@@ -24,7 +24,7 @@ const server = http.createServer(app);
 
 const io = new Socket(server, {
     cors: {
-        origin: 'http://127.0.0.1:5173',
+        origin: 'http://localhost:5173',
         methods: ['GET', 'POST']
     },
 });

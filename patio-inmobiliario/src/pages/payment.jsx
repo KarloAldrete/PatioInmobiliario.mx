@@ -5,8 +5,6 @@ import { loadStripe } from '@stripe/stripe-js';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { useCart } from '../context/CartContext';
-
 const stripePromise = loadStripe('pk_test_51JEIObC0PsLvELgecyktywTXiyjs1vNovXJP8NLhqI3U8VnFvkaxycmVti6IdStUihO0Uhq3qxjsy8rojQZAkftL00pnkqyaXp');
 
 import '../styles/payment.css';
@@ -20,7 +18,6 @@ const socket = io("http://localhost:4000/payment");
 function Payment() {
     const [propertyInfo, setPropertyInfo] = useState(null);
     const { id } = useParams();
-    const { cartItems } = useCart();
 
     useEffect(() => {
 
@@ -41,7 +38,6 @@ function Payment() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ cartItems }),
         });
 
         if (response.ok) {
