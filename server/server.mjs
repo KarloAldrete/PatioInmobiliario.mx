@@ -5,13 +5,17 @@ import morgan from 'morgan';
 import { Server as Socket } from 'socket.io';
 import mongodb, { ObjectId } from 'mongodb';
 import axios from 'axios';
+import stripePackage from 'stripe';
+
+const stripe = new stripePackage('sk_test_51JEIObC0PsLvELgeOk7nfQu1YLKcUbNQPIrfhUhFq3YtUOCmZVngrSY2c8StCIA1aeKxwK6kum9ccsNlPRtOpOq700X9siHcMC');
 
 const app = express();
 
 app.use(cors({
-    origin: 'http://127.0.0.1',
+    origin: 'http://127.0.0.1:5173',
 }));
 app.use(morgan('combined'));
+app.use(express.json());
 
 const port = process.env.PORT || "4000";
 const MONGO_URI = 'mongodb+srv://KarloAldrete:YouDontKnowMe01.@patioinmobiliario.r805ery.mongodb.net/test';
@@ -104,6 +108,41 @@ home.on("connection", (socket) => {
 });
 
 
+app.post('/api/create-checkout-session', async (req, res) => {
+    const cartItems = req.body.cartItems || [];
+
+    try {
+        const line_items = cartItems.map(item => ({
+            price_data: {
+                currency: 'usd',
+                product_data: {
+                    name: item.name,
+                    description: item.description,
+                    images: item.images,
+                },
+                unit_amount: item.price * 100,
+            },
+            quantity: item.quantity,
+        }));
+
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types: ['card'],
+            line_items,
+            mode: 'payment',
+            success_url: 'https://example.com/success?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url: 'https://example.com/cancel',
+            shipping_address_collection: {
+                allowed_countries: ['US', 'CA'],
+            },
+        });
+
+
+        res.status(200).json(session);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Ocurrió un error al crear la sesión de pago' });
+    }
+});
 
 
 
