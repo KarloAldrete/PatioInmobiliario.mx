@@ -11,24 +11,7 @@ import '../styles/payment.css';
 
 import { useParams } from "react-router-dom";
 
-import io from "socket.io-client";
-
-const socket = io("http://localhost:4000/payment");
-
 function Payment() {
-    const [propertyInfo, setPropertyInfo] = useState(null);
-    const { id } = useParams();
-
-    useEffect(() => {
-
-        socket.emit("property-details", { id });
-
-        socket.on("property-details", (data) => {
-            console.log(data);
-            setPropertyInfo(data);
-        });
-
-    }, [id, socket]);
 
     const redirectToCheckout = async () => {
         const stripe = await stripePromise;
