@@ -24,6 +24,10 @@
     justify-content: flex-start;
 }
 
+.navbar .navbar_container .navbar_logo .logo:hover {
+    cursor: pointer;
+}
+
 .navbar .navbar_container .navbar_menu {
     width: auto;
     height: 100%;
@@ -44,6 +48,7 @@
     color: #FF2E63;
     border-radius: 4px;
     border: 2px solid #FF2E63;
+    padding: 0 12px;
 }
 
 .navbar .navbar_container .navbar_menu button:hover {

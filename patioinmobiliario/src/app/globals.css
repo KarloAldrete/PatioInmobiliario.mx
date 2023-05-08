@@ -75,26 +75,4 @@ body {
 
 .Toastify {
   position: fixed;
-  z-index: var(--toastify-z-index);
-  padding: 8px;
-  width: var(--toastify-toast-width);
-  box-sizing: border-box;
-  color: var(--toastify-text-color-light);
-  font-family: var(--toastify-font-family);
-  font-size: 1rem;
-  pointer-events: auto;
-  overflow: hidden;
-  opacity: 1;
-  transition: all 0.2s ease;
-  top: 0;
-  left: 0;
-  margin: 8px;
-  background-position: 15px;
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  min-height: var(--toastify-toast-min-height);
-  max-height: var(--toastify-toast-max-height);
 }
