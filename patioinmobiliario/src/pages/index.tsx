@@ -6,6 +6,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import '../styles/home.css';
 
+import bed from '../assets/icons/card-bed.svg';
+import bath from '../assets/icons/card-bath.svg';
+import garage from '../assets/icons/card-garage.svg';
+
 type HomeProps = {
   properties: Property[];
 };
@@ -77,15 +81,15 @@ const Home = ({ properties }: HomeProps) => {
                     </div>
                     <div className="card_description_icons">
                       <div className="bedrooms">
-                        <i className="bx bxs-bed"></i>
+                        <Image src={bed} alt="bed" />
                         <p>{property.propBedrooms}</p>
                       </div>
                       <div className="bathrooms">
-                        <i className="bx bxs-bath"></i>
+                        <Image src={bath} alt="bath" />
                         <p>{property.propBathrooms}</p>
                       </div>
                       <div className="garage">
-                        <i className="bx bxs-car"></i>
+                        <Image src={garage} alt="garage" />
                         <p>{property.propParking}</p>
                       </div>
                     </div>
@@ -105,7 +109,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const { db } = await connectToDatabase();
   const data = await db.collection('properties').find({}).limit(20).toArray();
   const properties = JSON.parse(JSON.stringify(data));
-  console.log(properties);
   return {
     props: { properties },
   };

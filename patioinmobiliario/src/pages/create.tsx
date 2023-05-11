@@ -434,7 +434,6 @@ function Create() {
             imageList,
         };
 
-        console.log(newProperty);
     };
 
     return (
