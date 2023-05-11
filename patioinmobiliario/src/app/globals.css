@@ -12,6 +12,8 @@ body {
   line-height: 24px;
   color: #747c87;
   background-color: #EFF0F3;
+  margin: 0;
+  padding: 0;
 }
 
 #__next {
