@@ -381,8 +381,8 @@ const PropertyPage = ({ property }: PropertyPageProps) => {
           left: 0,
           transform: 'translateY(-50%)',
         }}>Anterior</button>
-        <img src={property?.imageList[currentImage]?.data} alt="Property" style={{
-          maxWidth: '100%', // Aseguramos que la imagen no exceda el tamaño del contenido
+        <Image src={property.imageList[currentImage]?.data} alt="Property" style={{
+          maxWidth: '100%',
           maxHeight: '100%',
         }} />
         <button onClick={nextImage} style={{

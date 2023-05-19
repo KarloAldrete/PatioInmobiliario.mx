@@ -24,6 +24,7 @@ type Property = {
   propBathrooms: number;
   propParking: number;
   imageList: { data: string }[];
+  currency: string;
 };
 
 const Home = ({ properties }: HomeProps) => {
@@ -65,7 +66,7 @@ const Home = ({ properties }: HomeProps) => {
                 </div>
                 <div className="card_info">
                   <div className="card_price">
-                    <p>{property.propCost} USD</p>
+                    <p>{property.propCost} {property.currency}</p>
                   </div>
                   <div className="card_address">
                     <div className="card_address_street">
