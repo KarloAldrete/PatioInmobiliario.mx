@@ -1,5 +1,8 @@
 import './globals.css'
-import Navbar from '../components/Navbar'
+import 'animate.css';
+import Navbar from '../components/Navbar/Navbar';
+import { ClerkProvider } from '@clerk/nextjs'
+import { esES } from "@clerk/localizations";
 
 export const metadata = {
   title: 'Patio Inmobiliario',
@@ -14,17 +17,30 @@ export default function RootLayout({
 
   return (
 
-    <html>
+    <ClerkProvider localization={esES}>
 
-      <body>
+      <html>
 
-        <Navbar />
+        <head>
 
-        {children}
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+          />
 
-      </body>
+        </head>
 
-    </html>
+        <body>
+
+          <Navbar />
+
+          {children}
+
+        </body>
+
+      </html>
+
+    </ClerkProvider>
 
   )
 

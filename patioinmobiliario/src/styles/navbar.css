@@ -1,12 +1,25 @@
 nav {
     width: 100%;
-    height: 64px;
+    height: auto;
     background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 32px;
+    z-index: 5;
+}
+
+
+
+
+
+nav .navbar {
+    width: 100%;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 16px;
-    z-index: 5;
 }
 
 nav .first-section {
@@ -15,15 +28,13 @@ nav .first-section {
     justify-content: center;
 }
 
-
-
-
-
-nav .modals-section {
+nav .news-modal {
+    width: 0;
+    height: 0;
     display: none;
 }
 
-nav .modals-section.open {
+nav .news-modal.open {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -37,64 +48,79 @@ nav .modals-section.open {
     overflow: auto;
 }
 
-nav .modals-section .modals {
-    width: 100%;
-    height: auto;
-    max-width: 610px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-}
-
-nav .modals-section .modals .settings-modal {
+nav .settings-modal {
+    width: 0;
+    height: 0;
     display: none;
 }
 
-nav .modals-section .modals .settings-modal.open {
-    display: flex;
+nav .settings-modal.open {
+    position: fixed;
     width: 100%;
-    height: auto;
-    background-color: #FFFFFF;
-    padding: 24px;
-    border-radius: 4px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 2;
+    overflow: auto;
 }
 
-nav .modals-section .modals .settings-modal.open .first-row {
+nav .search-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav .modal {
     width: 100%;
+    max-width: 610px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    padding: 24px;
+    gap: 8px;
+}
+
+nav .first-row {
+    width: 100%;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 16px;
 }
 
-nav .modals-section .modals .settings-modal.open .first-row h1 {
+nav .first-row h1 {
     font-size: 20px;
-    line-height: 32px;
     font-weight: 600;
     color: #000000;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
-nav .modals-section .modals .settings-modal.open .first-row svg {
+nav .first-row .close-icon {
     width: 24px;
     height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-nav .modals-section .modals .settings-modal.open .first-row svg:hover {
+nav .first-row svg:hover {
     cursor: pointer;
     filter: brightness(0) saturate(100%) invert(29%) sepia(94%) saturate(2397%) hue-rotate(327deg) brightness(100%) contrast(103%);
-}
-
-nav .modals-section .modals .profile-modal {
-    display: none;
-}
-
-nav .modals-section .modals .profile-modal.open {
-    display: flex;
-    width: 100%;
-    height: auto;
-    background-color: #FFFFFF;
-    padding: 24px;
-    border-radius: 4px;
 }
 
 
@@ -118,22 +144,21 @@ nav .third-section .icons {
     gap: 16px;
 }
 
-nav .third-section .icons .search-icon {
+nav .third-section .icons .icon-container {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+nav .third-section .icons .icon-container .icon {
     width: 24px;
     height: 24px;
 }
 
-nav .third-section .icons .news-icon {
-    width: 24px;
-    height: 24px;
-}
-
-nav .third-section .icons .config-icon {
-    width: 24px;
-    height: 24px;
-}
-
-nav .third-section .icons .user-icon {
+nav .third-section .icons .icon-container .icon path {
     width: 24px;
     height: 24px;
 }

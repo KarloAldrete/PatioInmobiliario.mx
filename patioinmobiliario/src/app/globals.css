@@ -4,6 +4,9 @@
   box-sizing: border-box;
   margin: 0;
   font-family: 'Poppins', sans-serif;
+  /* remove scroll */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 body {
@@ -12,5 +15,87 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 24px;
-} 
+  gap: 12px;
+}
+
+.cl-avatarBox.cl-userButtonAvatarBox.🔒️.cl-internal-11ewti4 {
+  width: 28px;
+  height: 28px;
+}
+
+.cl-formButtonPrimary {
+  background-color: #FF2E63;
+}
+
+.cl-formButtonPrimary:hover {
+  background-color: #FF2E63;
+}
+
+.cl-formButtonReset {
+  color: #FF2E63;
+}
+
+.cl-formButtonReset:hover,
+.cl-formButtonReset:focus,
+.cl-formButtonReset:active {
+  background-color: #fddde5;
+}
+
+.cl-profileSectionPrimaryButton {
+  color: #FF2E63;
+}
+
+.cl-profileSectionPrimaryButton:hover {
+  background-color: #fddde5;
+}
+
+.cl-badge {
+  color: #FF2E63;
+  background-color: #fddde5;
+}
+
+.cl-accordionTriggerButton {
+  --accent: #FF2E63;
+}
+
+.cl-footerActionLink {
+  color: #FF2E63;
+}
+
+.cl-footerActionLink:hover,
+.cl-footerActionLink:focus,
+.cl-footerActionLink:active {
+  color: #FF2E63;
+}
+
+.cl-userPreviewSecondaryIdentifier {
+  color: #FF2E63;
+}
+
+.cl-identityPreviewEditButton {
+  color: #FF2E63;
+}
+
+.cl-otpCodeFieldInput {
+  color: #FF2E63;
+  accent-color: #FF2E63;
+}
+
+.cl-otpCodeFieldInput:focus,
+.cl-otpCodeFieldInput:active,
+.cl-otpCodeFieldInput:hover {
+  color: #FF2E63;
+  accent-color: #FF2E63;
+}
+
+.cl-formResendCodeLink {
+  color: #FF2E63;
+}
+
+.cl-internal-1cngl90:focus {
+  border-color: #FF2E63;
+}
+
+.cl-formFieldAction {
+  color: #FF2E63;
+}
