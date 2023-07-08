@@ -1,6 +1,7 @@
 import './globals.css'
 import 'animate.css';
-import Navbar from '../components/Navbar/Navbar';
+import Navbar from '@/components/Navbar/Navbar';
+import Footer from '@/components/Footer/Footer';
 import { ClerkProvider } from '@clerk/nextjs'
 import { esES } from "@clerk/localizations";
 
@@ -35,6 +36,8 @@ export default function RootLayout({
           <Navbar />
 
           {children}
+
+          <Footer />
 
         </body>
 

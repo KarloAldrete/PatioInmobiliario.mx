@@ -3,10 +3,8 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
   font-family: 'Poppins', sans-serif;
-  /* remove scroll */
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 
 body {
@@ -14,8 +12,19 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 1030px;
+  height: 100%;
+  min-height: calc(100vh - 232px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: flex-start;
-  gap: 12px;
+  gap: 32px;
+  margin: 32px 0;
 }
 
 .cl-avatarBox.cl-userButtonAvatarBox.🔒️.cl-internal-11ewti4 {

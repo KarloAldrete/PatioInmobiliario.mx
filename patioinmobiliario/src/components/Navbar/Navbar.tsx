@@ -2,21 +2,18 @@ import Image from 'next/image';
 
 import Logo from '../../public/logo.svg';
 
-import CogModal from './cogModal';
+import PropertyButton from './propertyButton';
 import NewsModal from './newsModal';
 import SearchModal from './search';
-// import { BiMenuAltRight } from 'react-icons/bi'
 
-// import { auth } from '@clerk/nextjs';
+import { auth } from '@clerk/nextjs';
 import UserProfile from './userProfile';
 
 
 import '../../styles/navbar.css';
 
 const Navbar = () => {
-    // const userId = auth().userId;
-
-    // console.log(userId);
+    const userId = auth().userId;
 
     return (
 
@@ -26,7 +23,7 @@ const Navbar = () => {
 
                 <div className="first-section">
 
-                    <Image src={Logo} alt="Logo" />
+                    <Image src={Logo} alt="Logo" width={124} height={32} />
 
                 </div>
 
@@ -38,7 +35,11 @@ const Navbar = () => {
 
                         <NewsModal />
 
-                        <CogModal />
+                        <div className="user-icon" style={{ display: userId ? 'flex' : 'none' }}>
+
+                            <PropertyButton />
+
+                        </div>
 
                         <UserProfile />
 

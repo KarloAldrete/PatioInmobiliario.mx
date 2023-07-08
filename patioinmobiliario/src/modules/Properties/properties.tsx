@@ -5,7 +5,7 @@ import { PiBathtubFill } from 'react-icons/pi';
 import { FaBed } from 'react-icons/fa';
 import { BsFillCarFrontFill } from 'react-icons/bs';
 import Image from 'next/image';
-import house from '../../images/testing.jpg';
+import house from '../../images/house.jpg';
 
 type Property = {
     _id: string;
@@ -38,7 +38,7 @@ export default function Properties() {
     }, [properties.length]);
 
     const getPropertiesForCurrentPage = () => {
-        const propertiesPerPage = 25;
+        const propertiesPerPage = 20;
         const indexOfLastProperty = currentPage * propertiesPerPage;
         const indexOfFirstProperty = indexOfLastProperty - propertiesPerPage;
         const currentProperties = properties.slice(
@@ -51,17 +51,15 @@ export default function Properties() {
 
     const currentProperties = getPropertiesForCurrentPage();
 
-    console.log(currentProperties);
-    console.log(totalProperties);
-    console.log(currentPage);
-
     return (
+
         <div className="home-container">
+
             <div className="properties-available">
                 {currentProperties.map((property: Property) => (
                     <div className="property" key={property._id}>
                         <div className="property-image">
-                            <Image src={house} priority={true} alt="house" />
+                            <Image src={house} priority={true} alt="house" width={300} height={200} />
                         </div>
                         <div className="property-info">
                             <div className="location">
@@ -106,11 +104,16 @@ export default function Properties() {
             <div className="pagination">
                 <Pagination
                     current={currentPage}
-                    onChange={(page) => setCurrentPage(page)}
+                    onChange={(page) => {
+                        setCurrentPage(page);
+                        window.scrollTo(0, 0);
+                    }}
                     total={totalProperties}
-                    pageSize={25}
+                    pageSize={20}
                 />
             </div>
+
         </div>
+
     );
 }

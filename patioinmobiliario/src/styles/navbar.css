@@ -167,3 +167,26 @@ nav .third-section .icons svg:hover {
     cursor: pointer;
     filter: brightness(0) saturate(100%) invert(29%) sepia(94%) saturate(2397%) hue-rotate(327deg) brightness(100%) contrast(103%);
 }
+
+nav .third-section .create-property-link {
+    width: 100%;
+    height: 34px;
+    background-color: #FF2E63;
+    border-radius: 4px;
+    border: none;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #FF2E63;
+}
+
+nav .third-section .create-property-link:hover {
+    background-color: #FFFFFF;
+    color: #FF2E63;
+    border: 2px solid #FF2E63;
+    cursor: pointer;
+}
