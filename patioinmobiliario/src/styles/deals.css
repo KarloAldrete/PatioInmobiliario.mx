@@ -2,8 +2,25 @@
     grid-column: 1 / 13;
     height: 76px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title .title-left {
+    width: auto;
+    height: auto;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+}
+
+.title .title-right {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: flex-end;
     justify-content: flex-end;
     gap: 4px;
 }
@@ -97,6 +114,114 @@
 
 
 
+.content .content-header .progress-deals-header {
+    grid-column: 4 / 7;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 8px;
+}
+
+.content .content-header .progress-deals-header .title {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.content .content-header .progress-deals-header .title h2 {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.content .content-header .progress-deals-header .revenue {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+}
+
+.content .content-header .progress-deals-header .revenue h2 {
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 400;
+    color: #636D7E;
+}
+
+.content .content-header .progress-deals-header .revenue span {
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 600;
+    color: #000000;
+}
+
+
+
+
+
+.content .content-header .finished-deals-header {
+    grid-column: 7 / 10;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 8px;
+}
+
+.content .content-header .finished-deals-header .title {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.content .content-header .finished-deals-header .title h2 {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.content .content-header .finished-deals-header .revenue {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+}
+
+.content .content-header .finished-deals-header .revenue h2 {
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 400;
+    color: #636D7E;
+}
+
+.content .content-header .finished-deals-header .revenue span {
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 600;
+    color: #000000;
+}
+
+
+
+
+
 .content .content-body {
     grid-column: 1 / 13;
     height: calc(100vh - 286px);
@@ -106,12 +231,29 @@
 }
 
 .content .content-body .new-deals-container {
+    max-height: calc(100vh - 286px);
     grid-column: 1 / 4;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     gap: 8px;
+    overflow: auto;
+}
+
+.content .content-body .new-deals-container::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 8px;
+}
+
+.content .content-body .new-deals-container::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 8px;
+}
+
+.content .content-body .new-deals-container::-webkit-scrollbar-thumb {
+    background: #FA5F86;
+    border-radius: 8px;
 }
 
 .content .content-body .new-deals-container .listing {
@@ -222,13 +364,269 @@
     color: #636D7E;
 }
 
+.content .content-body .new-deals-container .listing .listing-body-bottom {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 8px;
+}
+
+.content .content-body .new-deals-container .listing .listing-body-bottom .info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content .content-body .new-deals-container .listing .listing-body-bottom .info .info-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+
+.content .content-body .new-deals-container .listing .listing-body-bottom .info .info-left span {
+    font-size: 14px;
+    line-height: 12px;
+    font-weight: 400;
+    color: #636D7E;
+}
+
+.content .content-body .new-deals-container .listing .listing-body-bottom .info .info-right span {
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.content .content-body .new-deals-container .listing .listing-body-bottom .info .info-right #property {
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 500;
+    color: #FA5F86;
+}
+
+.content .content-body .new-deals-container .listing .progress-bar {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+}
+
+.content .content-body .new-deals-container .listing .progress-bar span {
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 500;
+    color: #000000;
+    margin-left: 4px;
+}
+
 
 
 
 
 .content .content-body .progress-deals-container {
+    max-height: calc(100vh - 286px);
     grid-column: 4 / 7;
-    border: 1px red solid;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    overflow: auto;
+}
+
+.content .content-body .progress-deals-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.content .content-body .progress-deals-container::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 8px;
+}
+
+.content .content-body .progress-deals-container::-webkit-scrollbar-thumb {
+    background: #FA5F86;
+    border-radius: 8px;
+}
+
+.content .content-body .progress-deals-container .listing {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    grid-area: 8px;
+    padding: 16px 12px;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    gap: 8px;
+}
+
+.content .content-body .progress-deals-container .listing .listing-header {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content .content-body .progress-deals-container .listing .listing-header .date {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+
+.content .content-body .progress-deals-container .listing .listing-header .date span:nth-child(2) {
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 400;
+    color: #636D7E;
+}
+
+.content .content-body .progress-deals-container .listing .listing-header .date span:nth-child(3) {
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 400;
+    color: #E1E1E6;
+}
+
+.content .content-body .progress-deals-container .listing .listing-header .carot img:hover {
+    filter: brightness(0) saturate(100%) invert(67%) sepia(45%) saturate(5736%) hue-rotate(309deg) brightness(99%) contrast(99%);
+    cursor: pointer;
+}
+
+.content .content-body .progress-deals-container .listing .listing-body {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+}
+
+.content .content-body .progress-deals-container .listing .listing-body .listing-body-top {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+}
+
+.content .content-body .progress-deals-container .listing .listing-body .listing-body-top .info {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content .content-body .progress-deals-container .listing .listing-body .listing-body-top .info h2 {
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.content .content-body .progress-deals-container .listing .listing-body .listing-body-top .info span {
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 400;
+    color: #636D7E;
+}
+
+.content .content-body .progress-deals-container .listing .listing-body .listing-body-top .contact {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+
+.content .content-body .progress-deals-container .listing .listing-body .listing-body-top .contact span {
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 400;
+    color: #636D7E;
+}
+
+.content .content-body .progress-deals-container .listing .listing-body-bottom {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 8px;
+}
+
+.content .content-body .progress-deals-container .listing .listing-body-bottom .info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content .content-body .progress-deals-container .listing .listing-body-bottom .info .info-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+
+.content .content-body .progress-deals-container .listing .listing-body-bottom .info .info-left span {
+    font-size: 14px;
+    line-height: 12px;
+    font-weight: 400;
+    color: #636D7E;
+}
+
+.content .content-body .progress-deals-container .listing .listing-body-bottom .info .info-right span {
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.content .content-body .progress-deals-container .listing .listing-body-bottom .info .info-right #property {
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 500;
+    color: #FA5F86;
+}
+
+.content .content-body .progress-deals-container .listing .progress-bar {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+}
+
+.content .content-body .new-deals-container .listing .progress-bar span {
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 500;
+    color: #000000;
+    margin-left: 4px;
 }
 
 
@@ -236,6 +634,135 @@
 
 
 .content .content-body .finished-deals-container {
+    max-height: calc(100vh - 286px);
     grid-column: 7 / 10;
-    border: 1px red solid;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    overflow: auto;
+}
+
+.content .content-body .finished-deals-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.content .content-body .finished-deals-container::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 8px;
+}
+
+.content .content-body .finished-deals-container::-webkit-scrollbar-thumb {
+    background: #FA5F86;
+    border-radius: 8px;
+}
+
+.content .content-body .finished-deals-container .listing {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    grid-area: 8px;
+    padding: 16px 12px;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    gap: 8px;
+}
+
+.content .content-body .finished-deals-container .listing .listing-header {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content .content-body .finished-deals-container .listing .listing-header .date {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+
+.content .content-body .finished-deals-container .listing .listing-header .date span:nth-child(2) {
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 400;
+    color: #636D7E;
+}
+
+.content .content-body .finished-deals-container .listing .listing-header .date span:nth-child(3) {
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 400;
+    color: #E1E1E6;
+}
+
+.content .content-body .finished-deals-container .listing .listing-header .carot img:hover {
+    filter: brightness(0) saturate(100%) invert(67%) sepia(45%) saturate(5736%) hue-rotate(309deg) brightness(99%) contrast(99%);
+    cursor: pointer;
+}
+
+.content .content-body .finished-deals-container .listing .listing-body {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+}
+
+.content .content-body .finished-deals-container .listing .listing-body .listing-body-top {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+    padding: 4px;
+}
+
+.content .content-body .finished-deals-container .listing .listing-body .listing-body-top .info {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content .content-body .finished-deals-container .listing .listing-body .listing-body-top .info h2 {
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.content .content-body .finished-deals-container .listing .listing-body .listing-body-top .info span {
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 500;
+    color: #FA5F86;
+}
+
+.content .content-body .finished-deals-container .listing .listing-body .listing-body-top .contact {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+
+.content .content-body .finished-deals-container .listing .listing-body .listing-body-top .contact span {
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 400;
+    color: #636D7E;
 }
