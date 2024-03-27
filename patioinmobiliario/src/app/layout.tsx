@@ -1,50 +1,27 @@
-import './globals.css'
-import 'animate.css';
-import Navbar from '@/components/Navbar/Navbar';
-import Footer from '@/components/Footer/Footer';
-import { ClerkProvider } from '@clerk/nextjs'
-import { esES } from "@clerk/localizations";
+import type { Metadata } from "next"
+import Navbar from '@/components/navbar'
+import "./globals.css";
 
-export const metadata = {
-  title: 'Patio Inmobiliario',
-  description: 'La plataforma de inmuebles más grande de Latinoamérica'
-}
+import { AuthProvider } from "@/context/AuthContext";
+
+export const metadata: Metadata = {
+  title: "Patio Inmobiliario",
+  description: "Diseños unicos, espacios que inspiran. Tu próximo inmueble te espera.",
+};
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
-
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-
-    <ClerkProvider localization={esES}>
-
-      <html>
-
-        <head>
-
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-          />
-
-        </head>
-
-        <body>
-
+    <html>
+      <AuthProvider>
+        <body className="w-full h-full">
           <Navbar />
-
           {children}
-
-          <Footer />
-
         </body>
-
-      </html>
-
-    </ClerkProvider>
-
-  )
-
+      </AuthProvider>
+    </html>
+  );
 }
