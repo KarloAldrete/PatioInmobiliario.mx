@@ -108,47 +108,109 @@ export default function Page() {
 
   const handleFinish = async () => {
 
-    const { data, error } = await supabase
-      .storage
-      .listBuckets()
-
-    console.log(data);
-
     try {
 
-      const uploadPromises = currentImages.map((image) => {
-        const filePath = `${user?.email}/${image.name}`;
+      const bucketCheck = await supabase
+        .storage
+        .from('properties')
+        .list(`${user?.email}`, {
+          limit: 100,
+          offset: 0,
+          sortBy: { column: 'name', order: 'asc' },
+        })
 
-        return supabase.storage.from('properties').upload(filePath, image.file, {
-          cacheControl: '3600',
-          upsert: false,
+      console.log("Bucket check results:", bucketCheck);
+
+      if (bucketCheck.data?.[0].name == '.emptyFolderPlaceholder') {
+
+        const uploadPromises = currentImages.map((image) => {
+          const filePath = `${user?.email}/1/${image.name}`;
+
+          return supabase.storage.from('properties').upload(filePath, image.file, {
+            cacheControl: '3600',
+            upsert: false,
+          });
+
         });
-      });
 
-      const uploadResults = await Promise.all(uploadPromises);
+        const uploadResults = await Promise.all(uploadPromises);
 
-      const signedUrlPromises = await uploadResults.map((result) => {
-        if (result.error) throw result.error;
-        return supabase.storage.from('properties').createSignedUrl(result.data.path, 3600);
-      });
+        console.log(uploadResults);
 
-      const signedUrls = await Promise.all(signedUrlPromises);
+        setTimeout(async () => {
 
-      const updatedImages = currentImages.map((image, index) => {
-        const signedUrlResult = signedUrls[index];
-        if (signedUrlResult.error) throw signedUrlResult.error;
+          const doubleCheck = await supabase
+            .storage
+            .from('properties')
+            .list(`${user?.email}/1`, {
+              limit: 100,
+              offset: 0,
+            })
 
-        return {
-          ...image,
-          url: signedUrlResult.data?.signedUrl || image.url,
-        };
-      });
+          const supabaseImages = doubleCheck.data;
 
-      setCurrentImages(updatedImages);
+          const imageUrls = supabaseImages?.map((image) => {
+            return supabase.storage.from(`properties/${user?.email}`).getPublicUrl(`1/${image.name}`);
+          });
 
-      setTimeout(() => {
-        console.log(currentImages);
-      }, 5000);
+          imageUrls?.map((image) => {
+            console.log(image.data.publicUrl);
+          })
+
+        }, 2000);
+
+      } else {
+
+        const newIndex = parseInt(bucketCheck.data?.[0].name || '1') + 1;
+
+        const uploadPromises = currentImages.map((image) => {
+          const filePath = `${user?.email}/${newIndex}/${image.name}`;
+
+          return supabase.storage.from('properties').upload(filePath, image.file, {
+            cacheControl: '3600',
+            upsert: false,
+          });
+
+        });
+
+        const uploadResults = await Promise.all(uploadPromises);
+
+        console.log(uploadResults);
+
+        setTimeout(async () => {
+          const doubleCheck = await supabase
+            .storage
+            .from('properties')
+            .list(`${user?.email}/${newIndex}`, {
+              limit: 100,
+              offset: 0,
+            })
+
+          const supabaseImages = doubleCheck.data;
+
+          const imageUrls = supabaseImages?.map((image) => {
+            return supabase.storage.from(`properties/${user?.email}`).getPublicUrl(`${newIndex}/${image.name}`);
+          }) || []; // Ensure imageUrls is always an array
+
+          // Assuming handleInsert expects a JSON object for images, convert imageUrls to JSON
+          const imageUrlsJson = JSON.stringify(imageUrls.map(imageUrl => ({ url: imageUrl.data.publicUrl })));
+
+          const complementaryInformation = {
+            kitchen: isKitchenOn,
+            washroom: isWashroomOn,
+            gas: isGasOn,
+            garden: isGardenOn,
+            jacuzzi: isJacuzziOn,
+            pool: isPoolOn,
+            ac: isAcOn,
+            gym: isGymOn
+          };
+
+          handleInsert(JSON.parse(imageUrlsJson), currentCity, currentZone, currentPrice, currentCurrency, currentDescription, currentRooms, currentBathrooms, currentParkings, currentType, currentTerrain, currentConstruction, currentYear, complementaryInformation);
+
+        }, 2000);
+
+      }
 
     } catch (error) {
 
@@ -157,6 +219,34 @@ export default function Page() {
     };
 
   };
+
+  async function handleInsert(images: any, city: string, state: string, price: number, currency: string, description: string, bedRooms: number, bathRooms: number, parkingLots: number, type: string, terrainDimension: number, constructionDimension: number, yearBuild: number, complementaryInformation: { kitchen: boolean; washroom: boolean; gas: boolean; garden: boolean; jacuzzi: boolean; pool: boolean; ac: boolean; gym: boolean; }) {
+    try {
+      const { data, error } = await supabase
+        .from('properties')
+        .insert({
+          images: images,
+          city: city,
+          state: state,
+          price: price,
+          currency: currency,
+          description: description,
+          bedRooms: bedRooms,
+          bathRooms: bathRooms,
+          parkingLots: parkingLots,
+          type: type,
+          terrainDimension: terrainDimension,
+          constructionDimension: constructionDimension,
+          yearBuild: yearBuild,
+          complementaryInformation: complementaryInformation,
+        })
+
+      console.log(data);
+      if (error) throw error;
+    } catch (error) {
+      console.error('Error inserting data:', error);
+    }
+  }
 
 
 
@@ -406,7 +496,7 @@ export default function Page() {
 
 
   return (
-    <div className="w-full flex flex-col items-center justify-start pb-10 px-[60px]">
+    <div className="w-full h-full flex flex-col items-center justify-start pb-10 px-[60px]">
 
       <div className="w-full max-w-[1320px] h-auto flex flex-col items-start justify-start py-10 cursor-default gap-1">
 
@@ -418,30 +508,36 @@ export default function Page() {
 
       <div className="w-full max-w-[1320px] h-full flex flex-row justify-start items-start gap-5">
 
-        <div className="rounded w-8/12 h-auto">
+        <div className="rounded w-8/12 h-screen max-h-[480px] flex flex-col">
 
           {currentStep === 0 && (
-            <div className="w-auto border border-[#E5E7EB] h-auto rounded-md p-3 flex flex-col items-start justify-start gap-3">
+            <div className={`${currentImages.length > 0 ? "h-auto" : "h-full"} border border-[#E5E7EB] rounded-md p-3 flex flex-col items-start justify-start gap-3`}>
 
               <span className="text-base leading-5 font-semibold text-[#A0A0A0]">Imagenes</span>
 
-              <div className="h-auto flex flex-wrap gap-3 items-start justify-start">
+              {currentImages.length > 0 ? (
+                <div className="h-auto flex flex-wrap gap-3 items-start justify-start">
 
-                {currentImages.map((image, index) => (
-                  <div key={index} className="w-[130px] h-[130px] relative bg-[#F4F4F5] rounded group">
-                    <picture>
-                      <img className="w-full h-full rounded object-cover" alt={`img-${index}`} src={image.url} />
-                    </picture>
-                    <button
-                      className="absolute top-0 right-0 left-0 bottom-0 bg-black rounded bg-opacity-50 text-white font-bold p-1 rounded-bl opacity-0 group-hover:opacity-100"
-                      onClick={() => handleRemoveImage(index)}
-                    >
-                      X
-                    </button>
-                  </div>
-                ))}
+                  {currentImages.map((image, index) => (
+                    <div key={index} className="w-[130px] h-[130px] relative bg-[#F4F4F5] rounded group">
+                      <picture>
+                        <img className="w-full h-full rounded object-cover" alt={`img-${index}`} src={image.url} />
+                      </picture>
+                      <button
+                        className="absolute top-0 right-0 left-0 bottom-0 bg-black rounded bg-opacity-50 text-white font-bold p-1 rounded-bl opacity-0 group-hover:opacity-100"
+                        onClick={() => handleRemoveImage(index)}
+                      >
+                        X
+                      </button>
+                    </div>
+                  ))}
 
-              </div>
+                </div>
+              ) : (
+                <div className="w-full h-full text-center py-5 flex items-center justify-center">
+                  <span className="text-sm text-gray-500">No hay imágenes para mostrar. Por favor, agrega algunas.</span>
+                </div>
+              )}
 
               <input
                 type="file"
@@ -452,7 +548,7 @@ export default function Page() {
                 style={{ display: 'none' }}
               />
 
-              <Button className="bg-black rounded h-full w-full text-white font-semibold" onClick={triggerFileInputClick}>
+              <Button className="bg-black rounded h-auto max-h-[32px] w-full text-white font-semibold" onClick={triggerFileInputClick}>
                 Agregar Imagenes
               </Button>
 
@@ -767,7 +863,7 @@ export default function Page() {
 
         </div>
 
-        <div className="rounded w-4/12 h-[600px] flex flex-col items-center justify-start p-3 gap-5 cursor-default">
+        <div className="rounded w-4/12 flex flex-col items-center justify-start p-3 gap-5 cursor-default">
 
           <div className="max-w-[315px] h-5 w-full flex justify-between items-center">
 
