@@ -6,7 +6,7 @@ import PropertyButton from "@/components/home/propertyButton";
 
 
 type Property = {
-    id: number;
+    id: string;
     created_at: string;
     images: { url: string; }[];
     city: string;
@@ -102,7 +102,7 @@ export default function FeaturedListings() {
 
                         </div>
 
-                        <PropertyButton property={(house.id).toString()} />
+                        <PropertyButton property={house.id} />
 
                     </div>
 
