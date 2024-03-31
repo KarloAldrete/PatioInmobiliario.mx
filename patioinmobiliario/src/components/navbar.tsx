@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { useAuth } from '@/context/AuthContext';
+import { createClient } from '@/utils/supabase/client';
 
 import {
     CommandDialog,
@@ -23,18 +24,32 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarImage } from "@/components/ui/avatar"
 
 import AuthContext from '@/context/AuthContext';
 
-import { IconCommand, IconLayoutGrid, IconLivePhoto, IconLogout2 } from '@tabler/icons-react';
+import { IconCommand, IconFile, IconHome, IconLayoutGrid, IconLogout2, IconSettings, IconUserFilled } from '@tabler/icons-react';
+
+type UserProfile = {
+    avatar_url: string | null;
+    created_at: string;
+    current_properties: any | null;
+    email: string;
+    full_name: string;
+    id: number;
+    subscription_ends: string;
+    subscription_start: string;
+    subscription_status: boolean;
+}
 
 
 export default function Navbar() {
     const router = useRouter();
+    const supabase = createClient();
     const [isOpen, setIsOpen] = useState(false);
     const auth = useAuth();
     const { user } = useContext(AuthContext) ?? { user: null };
+    const [profile, setProfile] = useState<UserProfile | null>(null);
 
     useEffect(() => {
         const down = (e: KeyboardEvent) => {
@@ -48,6 +63,29 @@ export default function Navbar() {
         return () => document.removeEventListener("keydown", down)
     }, [])
 
+    useEffect(() => {
+
+        const fetchProfile = async () => {
+            const { data, error } = await supabase
+                .from('users')
+                .select('*')
+                .eq('email', user?.email);
+
+            if (error) {
+                console.error('Error fetching profile:', error);
+                return;
+            }
+
+            console.log('Profile data:', data);
+            setProfile(data?.[0]);
+        };
+
+        if (user) {
+            fetchProfile();
+        }
+
+    }, [supabase, user]);
+
     const handleOpen = () => {
         setIsOpen(true)
     }
@@ -55,6 +93,8 @@ export default function Navbar() {
     const handleLogout = async () => {
         await auth?.logout();
     };
+
+    console.log(profile?.subscription_ends);
 
     return (
         <nav className="w-full h-14 border-b border-[#E5E7EB] flex flex-row justify-between items-center px-8">
@@ -84,25 +124,65 @@ export default function Navbar() {
 
                     <DropdownMenu>
                         <DropdownMenuTrigger>
-                            <Avatar className="w-8 h-8">
-                                <AvatarImage />
-                                <AvatarFallback>{user.email.slice(0, 2).toUpperCase()}</AvatarFallback>
+                            <Avatar className="w-8 h-8 flex items-center justify-center bg-black rounded-md">
+                                <IconUserFilled className="text-white" />
                             </Avatar>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>
-                            <DropdownMenuLabel>{user?.email}</DropdownMenuLabel>
+                            <DropdownMenuLabel className="pr-2mr-3 mr-12">
+                                <Avatar className="w-8 h-8 flex items-center justify-center bg-black">
+                                    <AvatarImage src={profile?.avatar_url || undefined} />
+                                    <IconUserFilled className="text-white bg-black" />
+                                </Avatar>
+                                <div className="w-full h-full flex flex-col">
+                                    <span className="text-sm leading-4">{profile?.full_name}</span>
+                                    <span className="text-[12px] text-[#A0A0A0]">{profile?.email}</span>
+                                </div>
+                            </DropdownMenuLabel>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem className="flex gap-1" onClick={() => router.push('/dashboard')}>
-                                <IconLivePhoto size={16} stroke={2} />
+                                <IconLayoutGrid size={16} stroke={2} />
                                 Dashboard
                             </DropdownMenuItem>
                             <DropdownMenuItem className="flex gap-1">
-                                <IconLayoutGrid size={16} stroke={2} />
+                                <IconHome size={16} stroke={2} />
                                 Publicaciones
                             </DropdownMenuItem>
-                            <DropdownMenuItem>Team</DropdownMenuItem>
-                            <DropdownMenuItem>Subscription</DropdownMenuItem>
+                            <DropdownMenuItem className="flex gap-1">
+                                <IconFile size={16} stroke={2} />
+                                Guias
+                            </DropdownMenuItem>
+                            <DropdownMenuItem className="flex gap-1">
+                                <IconSettings size={16} stroke={2} />
+                                Ajustes
+                            </DropdownMenuItem>
+
                             <DropdownMenuSeparator />
+
+                            <div className="h-full py-2 px-2 flex flex-row items-center justify-start">
+
+                                <div className="w-1/2 h-full flex flex-col">
+
+                                    <span className="text-sm font-semibold text-black">{profile?.subscription_status ? "Suscripción Activa" : "Plan Gratuito"}</span>
+
+                                    <span className="text-sm font-light">{profile?.current_properties?.length > 0 ? `${profile?.current_properties.length} publicaciones` : "Sin publicaciones"}</span>
+
+                                </div>
+
+                                <div className="w-1/2 flex items-center justify-end">
+                                    {profile?.subscription_ends && profile?.subscription_status && new Date(profile.subscription_ends) > new Date() ? (
+                                        <span className="text-sm h-[40px] flex items-end justify-end font-light p-0">
+                                            Vence en {Math.ceil((new Date(profile.subscription_ends).getTime() - new Date().getTime()) / (1000 * 3600 * 24))} dias
+                                        </span>
+                                    ) : (
+                                        <Button className="font-semibold text-sm w-auto h-auto bg-black px-3 py-1 text-white">Actualizar</Button>
+                                    )}
+                                </div>
+
+                            </div>
+
+                            <DropdownMenuSeparator />
+
                             <DropdownMenuItem className="flex gap-1" onClick={handleLogout}>
                                 <IconLogout2 size={16} stroke={2} />
                                 Cerrar Sesion

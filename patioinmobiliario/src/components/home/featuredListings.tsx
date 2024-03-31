@@ -17,6 +17,7 @@ type Property = {
     bedRooms: number;
     bathRooms: number;
     parkingLots: number;
+    visibility: boolean;
 }
 
 
@@ -30,6 +31,7 @@ export default function FeaturedListings() {
                 .from('properties')
                 .select('*')
                 .limit(12)
+                .eq('visibility', true)
 
             console.log(data)
             setHouses(data || []);
@@ -43,7 +45,7 @@ export default function FeaturedListings() {
 
         <div className="w-full max-w-[1320px] flex flex-wrap justify-center gap-5 px-[60px]">
 
-            {houses.map((house, index) => (
+            {houses.filter(house => house.visibility).map((house, index) => (
                 <div key={index} className="h-auto col-span-1 border border-[#E5E7EB] w-auto min-w-[280px] max-w-[285px] rounded-md p-1 flex flex-col items-start justify-start gap-2">
 
                     <picture>
