@@ -39,20 +39,20 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
     return (
         <div>
 
-            <div className="flex gap-2">
+            <div className="flex gap-2 gallery">
 
-                <div className='w-1/2 flex'>
+                <div className='w-1/2 flex main-image-container'>
                     <picture className="flex-grow">
                         <img
                             src={filteredImages[0].url}
                             alt={''}
-                            className="h-full w-full object-cover cursor-pointer rounded-l-md"
+                            className="h-full w-full object-cover cursor-pointer rounded-l-md main-image"
                             onClick={() => openModal(0)}
                         />
                     </picture>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 w-1/2">
+                <div className="grid grid-cols-2 gap-2 w-1/2 secondary-images-container">
                     {filteredImages.slice(1, 5).map((image, index) => {
                         let borderRadiusClass = '';
                         switch (index) {
@@ -77,7 +77,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
                                     <img
                                         src={image.url}
                                         alt={''}
-                                        className={`w-full h-full object-cover cursor-pointer ${borderRadiusClass}`}
+                                        className={`w-full h-full object-cover cursor-pointer ${borderRadiusClass} secondary-image`}
                                         onClick={() => openModal(index + 1)}
                                     />
                                 </picture>

@@ -33,7 +33,6 @@ export default function FeaturedListings() {
                 .limit(12)
                 .eq('visibility', true)
 
-            console.log(data)
             setHouses(data || []);
         };
         fetchData();

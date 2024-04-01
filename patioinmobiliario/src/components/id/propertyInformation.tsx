@@ -4,7 +4,7 @@ import { createClient } from '@/utils/supabase/client';
 import { usePathname } from 'next/navigation';
 import CustomGallery from '@/components/id/imageGallery';
 import { IconBarbell, IconBath, IconBed, IconBlender, IconChartBubble, IconParking, IconPool, IconShirt, IconShovel, IconSquareHalf, IconWall } from '@tabler/icons-react';
-import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import MapWithPlaces from '@/components/id/map';
 
 
 type Property = {
@@ -33,6 +33,8 @@ type Property = {
     terrainDimension: number;
     type: string;
     yearBuild: number;
+    longitude: any;
+    latitude: any;
 }
 
 export default function Information() {
@@ -40,25 +42,28 @@ export default function Information() {
     const pathname = usePathname();
     const id = pathname.split('/propiedades/')[1];
     const [house, setHouse] = useState<Property | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
+            setIsLoading(true);
             const { data } = await supabase
                 .from('properties')
                 .select('*')
-                .eq('id', id)
+                .eq('id', id);
 
-            setHouse(data?.[0])
+            setHouse(data?.[0]);
+            setIsLoading(false);
         };
         fetchData();
     }, [id, supabase]);
 
+    if (isLoading) {
+        return <div>Cargando...</div>;
+    }
+
     if (!house) {
-        return (
-            <div className=''>
-                <h2>Fetching Data</h2>
-            </div>
-        )
+        return <div>No se encontraron datos.</div>;
     }
 
     const splitDetails = () => {
@@ -91,7 +96,7 @@ export default function Information() {
     const { left, right } = splitDetails();
 
     return (
-        <div className='w-full max-w-[1320px] h-auto flex flex-col items-center justify-center py-[40px] cursor-default gap-5'>
+        <div className='w-full max-w-[1320px] h-auto flex flex-col items-center justify-center py-[40px] cursor-default gap-5 property-form'>
 
             <div className='border border-[#E5E7EB] w-full rounded-lg p-4 flex flex-col items-center justify-start gap-4'>
 
@@ -111,28 +116,28 @@ export default function Information() {
 
             </div>
 
-            <div className='w-full h-auto flex items-start justify-start gap-5'>
+            <div className='w-full h-auto flex items-start justify-start gap-5 information-container'>
 
-                <div className='w-8/12 flex flex-col gap-5 items-start justify-start'>
+                <div className='w-8/12 flex flex-col gap-5 items-start justify-start mobile-second'>
 
-                    <div className='border border-[#E5E7EB] w-full p-4 flex flex-col items-start justify-start gap-4 rounded-md'>
+                    <div className='border border-[#E5E7EB] w-full p-4 flex flex-col items-start justify-start gap-4 rounded-md secondary-information'>
 
                         <span className='text-black font-bold text-base leading-6'>Detalles de la propiedad</span>
 
-                        <div className='w-full h-auto flex items-start justify-start gap-5'>
+                        <div className='w-full h-auto flex items-start justify-start gap-5 details-list'>
 
-                            <div className='w-6/12 flex flex-col gap-5 items-start justify-start'>
+                            <div className='w-6/12 flex flex-col gap-5 items-start justify-start info-list'>
                                 {left.map((detail, index) => (
-                                    <div key={index} className='flex flex-row items-center gap-2 text-[#858585] text-base font-normal leading-5 w-full max-w-[356px]'>
+                                    <div key={index} className='flex flex-row items-center gap-2 text-[#858585] text-base font-normal leading-5 w-full max-w-[356px] info'>
                                         {detail.icon}
                                         <span>{detail.text}</span>
                                     </div>
                                 ))}
                             </div>
 
-                            <div className='w-6/12 flex flex-col gap-5 items-start justify-start'>
+                            <div className='w-6/12 flex flex-col gap-5 items-start justify-start info-list'>
                                 {right.map((detail, index) => (
-                                    <div key={index} className='flex flex-row items-center gap-2 text-[#858585] text-base font-normal leading-5 w-full max-w-[356px]'>
+                                    <div key={index} className='flex flex-row items-center gap-2 text-[#858585] text-base font-normal leading-5 w-full max-w-[356px] info'>
                                         {detail.icon}
                                         <span>{detail.text}</span>
                                     </div>
@@ -143,17 +148,27 @@ export default function Information() {
 
                     </div>
 
-                    <div className='border border-[#E5E7EB] w-full h-auto p-4 rounded-md items-start justify-start flex flex-col gap-4'>
+                    <div className='w-full h-auto p-2 bg-black rounded flex items-center justify-center cursor-pointer mobile-visit'>
+
+                        <span className='text-white text-base leading-5 font-semibold'>Agendar una visita</span>
+
+                    </div>
+
+                    <div className='border border-[#E5E7EB] w-full h-auto p-4 rounded-md items-start justify-start flex flex-col gap-4 map-information'>
 
                         <span className='text-black font-bold text-base leading-6'>Ubicación y lugares de interés</span>
 
-                        <iframe className='rounded' style={{ border: 0, width: '100%', height: '356px' }} loading="lazy" allowFullScreen src="https://www.google.com/maps/embed/v1/view?zoom=17&center=32.5247%2C-116.9322&key=AIzaSyAyj-ZAuA9LJlkuwIU5U9QrRX7JV6AgDrE"></iframe>
+                        <div className='w-full h-[356px] rounded'>
+
+                            <MapWithPlaces center={{ lat: house.latitude, lng: house.longitude }} zoom={15} />
+
+                        </div>
 
                     </div>
 
                 </div>
 
-                <div className='w-4/12 flex flex-col gap-5 items-start justify-start'>
+                <div className='w-4/12 flex flex-col gap-5 items-start justify-start mobile-first'>
 
                     <div className='border border-[#E5E7EB] w-full h-auto p-4 rounded-md flex flex-row items-center justify-between'>
 
@@ -171,7 +186,7 @@ export default function Information() {
 
                     </div>
 
-                    <div className='w-full h-auto p-2 bg-black rounded flex items-center justify-center cursor-pointer'>
+                    <div className='w-full h-auto p-2 bg-black rounded flex items-center justify-center cursor-pointer desktop-visit'>
 
                         <span className='text-white text-base leading-5 font-semibold'>Agendar una visita</span>
 

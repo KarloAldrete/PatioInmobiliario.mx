@@ -1,0 +1,79 @@
+.mobile-visit {
+    display: none;
+}
+
+@media screen and (max-width: 720px) {
+
+    .property-container {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .property-form {
+        padding-top: 20px;
+    }
+
+    .gallery {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-image-container {
+        width: 100%;
+    }
+
+    .main-image {
+        width: 100;
+        border-radius: 4px;
+    }
+
+    .secondary-images-container {
+        width: 100%;
+    }
+
+    .secondary-image {
+        border-radius: 4px;
+    }
+
+    .information-container {
+        display: flex;
+        flex-direction: column-reverse;
+        width: 100%;
+    }
+
+    .secondary-information {
+        width: 100%;
+    }
+
+    .secondary-information .details-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .secondary-information .details-list .info-list {
+        width: 100%;
+        max-width: none;
+    }
+
+    .mobile-visit {
+        display: flex;
+    }
+
+    .desktop-visit {
+        display: none;
+    }
+
+    .map-information {
+        width: 100%;
+    }
+
+    .mobile-first {
+        width: 100%;
+    }
+
+    .mobile-second {
+        width: 100%;
+    }
+
+}

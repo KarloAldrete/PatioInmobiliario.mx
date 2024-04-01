@@ -119,8 +119,6 @@ export default function Page() {
           sortBy: { column: 'name', order: 'asc' },
         })
 
-      console.log("Bucket check results:", bucketCheck);
-
       if (bucketCheck.data?.[0].name == '.emptyFolderPlaceholder') {
 
         const uploadPromises = currentImages.map((image) => {
@@ -134,8 +132,6 @@ export default function Page() {
         });
 
         const uploadResults = await Promise.all(uploadPromises);
-
-        console.log(uploadResults);
 
         setTimeout(async () => {
 
@@ -152,10 +148,6 @@ export default function Page() {
           const imageUrls = supabaseImages?.map((image) => {
             return supabase.storage.from(`properties/${user?.email}`).getPublicUrl(`1/${image.name}`);
           });
-
-          imageUrls?.map((image) => {
-            console.log(image.data.publicUrl);
-          })
 
         }, 2000);
 

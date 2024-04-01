@@ -76,7 +76,6 @@ export default function Navbar() {
                 return;
             }
 
-            console.log('Profile data:', data);
             setProfile(data?.[0]);
         };
 
@@ -93,8 +92,6 @@ export default function Navbar() {
     const handleLogout = async () => {
         await auth?.logout();
     };
-
-    console.log(profile?.subscription_ends);
 
     return (
         <nav className="w-full h-14 border-b border-[#E5E7EB] flex flex-row justify-between items-center px-8">
