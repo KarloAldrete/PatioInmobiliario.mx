@@ -143,11 +143,11 @@ export default function Information() {
 
                     </div>
 
-                    <div className='border border-[#E5E7EB] w-full h-auto p-4 rounded-md flex flex-row items-center justify-between'>
+                    <div className='border border-[#E5E7EB] w-full h-auto p-4 rounded-md items-start justify-start flex flex-col gap-4'>
 
                         <span className='text-black font-bold text-base leading-6'>Ubicación y lugares de interés</span>
 
-
+                        <iframe className='rounded' style={{ border: 0, width: '100%', height: '356px' }} loading="lazy" allowFullScreen src="https://www.google.com/maps/embed/v1/view?zoom=17&center=32.5247%2C-116.9322&key=AIzaSyAyj-ZAuA9LJlkuwIU5U9QrRX7JV6AgDrE"></iframe>
 
                     </div>
 
